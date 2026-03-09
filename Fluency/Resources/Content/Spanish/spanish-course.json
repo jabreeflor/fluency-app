@@ -1,0 +1,272 @@
+{
+  "course": {
+    "id": "spanish-en",
+    "name": "Spanish for English Speakers",
+    "sourceLanguage": "en",
+    "targetLanguage": "es",
+    "difficulty": "beginner",
+    "estimatedHours": 120,
+    "units": [
+      {
+        "id": "greetings",
+        "name": "Greetings & Basics",
+        "description": "Learn how to say hello, goodbye, and introduce yourself",
+        "icon": "wave",
+        "color": "#4CAF50",
+        "order": 1,
+        "lessons": [
+          {
+            "id": "greetings-1",
+            "name": "Hello & Goodbye",
+            "description": "Basic greetings and farewells",
+            "order": 1,
+            "type": "lesson",
+            "xpReward": 15
+          },
+          {
+            "id": "greetings-2", 
+            "name": "Introductions",
+            "description": "How to introduce yourself and others",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      },
+      {
+        "id": "food",
+        "name": "Food & Dining",
+        "description": "Vocabulary for food, drinks, and restaurant situations",
+        "icon": "restaurant",
+        "color": "#FF9800",
+        "order": 2,
+        "lessons": [
+          {
+            "id": "food-1",
+            "name": "Basic Foods",
+            "description": "Common foods and drinks",
+            "order": 1,
+            "type": "lesson", 
+            "xpReward": 15
+          },
+          {
+            "id": "food-2",
+            "name": "At the Restaurant",
+            "description": "Ordering food and restaurant phrases",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      },
+      {
+        "id": "family",
+        "name": "Family & People",
+        "description": "Family members and describing people",
+        "icon": "family",
+        "color": "#E91E63",
+        "order": 3,
+        "lessons": [
+          {
+            "id": "family-1",
+            "name": "Family Members",
+            "description": "Parents, siblings, and relatives",
+            "order": 1,
+            "type": "lesson",
+            "xpReward": 15
+          },
+          {
+            "id": "family-2",
+            "name": "Describing People",
+            "description": "Age, appearance, and personality",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      },
+      {
+        "id": "numbers",
+        "name": "Numbers & Counting",
+        "description": "Numbers, time, and quantities",
+        "icon": "calculator",
+        "color": "#2196F3",
+        "order": 4,
+        "lessons": [
+          {
+            "id": "numbers-1",
+            "name": "Numbers 1-20",
+            "description": "Basic counting and numbers",
+            "order": 1,
+            "type": "lesson",
+            "xpReward": 15
+          },
+          {
+            "id": "numbers-2",
+            "name": "Large Numbers",
+            "description": "Hundreds, thousands, and prices",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      },
+      {
+        "id": "colors",
+        "name": "Colors & Descriptions",
+        "description": "Colors and basic adjectives",
+        "icon": "palette",
+        "color": "#9C27B0",
+        "order": 5,
+        "lessons": [
+          {
+            "id": "colors-1",
+            "name": "Basic Colors",
+            "description": "Primary and secondary colors",
+            "order": 1,
+            "type": "lesson",
+            "xpReward": 15
+          },
+          {
+            "id": "colors-2",
+            "name": "Describing Objects",
+            "description": "Using colors to describe things",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      },
+      {
+        "id": "animals",
+        "name": "Animals & Nature",
+        "description": "Animals, pets, and nature vocabulary",
+        "icon": "pets",
+        "color": "#8BC34A",
+        "order": 6,
+        "lessons": [
+          {
+            "id": "animals-1",
+            "name": "Common Animals",
+            "description": "Dogs, cats, and farm animals",
+            "order": 1,
+            "type": "lesson",
+            "xpReward": 15
+          },
+          {
+            "id": "animals-2",
+            "name": "Wild Animals",
+            "description": "Zoo animals and wildlife",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      },
+      {
+        "id": "time",
+        "name": "Time & Dates",
+        "description": "Telling time, days, months, and dates",
+        "icon": "schedule",
+        "color": "#607D8B",
+        "order": 7,
+        "lessons": [
+          {
+            "id": "time-1",
+            "name": "Telling Time",
+            "description": "Hours, minutes, and time expressions",
+            "order": 1,
+            "type": "lesson",
+            "xpReward": 15
+          },
+          {
+            "id": "time-2",
+            "name": "Days & Months",
+            "description": "Calendar vocabulary and dates",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      },
+      {
+        "id": "weather",
+        "name": "Weather & Seasons",
+        "description": "Weather conditions and seasonal vocabulary",
+        "icon": "wb_sunny",
+        "color": "#FFC107",
+        "order": 8,
+        "lessons": [
+          {
+            "id": "weather-1",
+            "name": "Weather Conditions",
+            "description": "Sunny, rainy, hot, cold",
+            "order": 1,
+            "type": "lesson",
+            "xpReward": 15
+          },
+          {
+            "id": "weather-2",
+            "name": "Seasons & Climate",
+            "description": "Seasons and weather patterns",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      },
+      {
+        "id": "travel",
+        "name": "Travel & Transportation",
+        "description": "Getting around and travel vocabulary",
+        "icon": "flight",
+        "color": "#00BCD4",
+        "order": 9,
+        "lessons": [
+          {
+            "id": "travel-1",
+            "name": "Transportation",
+            "description": "Cars, buses, trains, and planes",
+            "order": 1,
+            "type": "lesson",
+            "xpReward": 15
+          },
+          {
+            "id": "travel-2",
+            "name": "Directions & Places",
+            "description": "Asking for directions and locations",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      },
+      {
+        "id": "shopping",
+        "name": "Shopping & Money",
+        "description": "Shopping vocabulary and transactions",
+        "icon": "shopping_cart",
+        "color": "#FF5722",
+        "order": 10,
+        "lessons": [
+          {
+            "id": "shopping-1",
+            "name": "At the Store",
+            "description": "Shopping vocabulary and prices",
+            "order": 1,
+            "type": "lesson",
+            "xpReward": 15
+          },
+          {
+            "id": "shopping-2",
+            "name": "Clothing & Sizes",
+            "description": "Clothes shopping and sizes",
+            "order": 2,
+            "type": "lesson",
+            "xpReward": 15
+          }
+        ]
+      }
+    ]
+  }
+}

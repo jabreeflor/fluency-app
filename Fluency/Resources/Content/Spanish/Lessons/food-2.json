@@ -1,0 +1,196 @@
+{
+  "id": "food-2",
+  "name": "At the Restaurant",
+  "description": "Order food, ask for the bill, and use restaurant phrases",
+  "unit": "food",
+  "order": 2,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "el menú", "translation": "menu", "phonetic": "el meh-NOO", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/menu.mp3" },
+    { "word": "la mesa", "translation": "table", "phonetic": "la MEH-sa", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 1, "audio": "es/mesa.mp3" },
+    { "word": "el camarero", "translation": "waiter", "phonetic": "el ka-ma-REH-ro", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/camarero.mp3" },
+    { "word": "quiero", "translation": "I want", "phonetic": "KYEH-ro", "partOfSpeech": "verb", "difficulty": 1, "audio": "es/quiero.mp3" },
+    { "word": "quisiera", "translation": "I would like", "phonetic": "ki-SYEH-ra", "partOfSpeech": "verb", "difficulty": 2, "audio": "es/quisiera.mp3" },
+    { "word": "la cuenta", "translation": "the bill / check", "phonetic": "la KWEN-ta", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 2, "audio": "es/cuenta.mp3" },
+    { "word": "rico/a", "translation": "delicious / tasty", "phonetic": "REE-ko", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/rico.mp3" },
+    { "word": "sin", "translation": "without", "phonetic": "seen", "partOfSpeech": "preposition", "difficulty": 2, "audio": "es/sin.mp3" },
+    { "word": "¿tiene?", "translation": "do you have?", "phonetic": "TYEH-neh", "partOfSpeech": "verb", "difficulty": 2, "audio": "es/tiene.mp3" },
+    { "word": "para llevar", "translation": "to go / takeout", "phonetic": "PAH-ra yeh-VAR", "partOfSpeech": "adverb", "difficulty": 2, "audio": "es/para_llevar.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "f2-e1",
+      "type": "multiple_choice",
+      "prompt": "How do you ask for the menu?",
+      "difficulty": 1,
+      "content": {
+        "question": "the menu",
+        "options": [
+          { "text": "la cuenta", "correct": false },
+          { "text": "el menú", "correct": true, "audio": "es/menu.mp3" },
+          { "text": "la mesa", "correct": false },
+          { "text": "el camarero", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f2-e2",
+      "type": "translation",
+      "prompt": "Translate to Spanish (polite form)",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "I would like water, please.",
+        "correctTranslation": "Quisiera agua, por favor.",
+        "alternativeTranslations": ["Quiero agua, por favor."],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "f2-e3",
+      "type": "matching",
+      "prompt": "Match the restaurant phrase to its meaning",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "la cuenta", "sourceAudio": "es/cuenta.mp3", "target": "the bill" },
+          { "source": "el menú", "sourceAudio": "es/menu.mp3", "target": "the menu" },
+          { "source": "para llevar", "sourceAudio": "es/para_llevar.mp3", "target": "to go" },
+          { "source": "el camarero", "sourceAudio": "es/camarero.mp3", "target": "waiter" }
+        ]
+      }
+    },
+    {
+      "id": "f2-e4",
+      "type": "word_bank",
+      "prompt": "Build: 'I want chicken without rice'",
+      "difficulty": 2,
+      "content": {
+        "sentence": "{} pollo {} arroz.",
+        "sentenceAudio": "es/quiero_pollo_sin_arroz.mp3",
+        "wordBank": [
+          { "text": "Quiero", "correct": true, "position": 0 },
+          { "text": "sin", "correct": true, "position": 1 },
+          { "text": "con", "correct": false },
+          { "text": "Quisiera", "correct": false },
+          { "text": "para", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f2-e5",
+      "type": "multiple_choice",
+      "prompt": "How do you say 'delicious' in Spanish?",
+      "difficulty": 1,
+      "content": {
+        "question": "delicious",
+        "options": [
+          { "text": "sin", "correct": false },
+          { "text": "rico", "correct": true, "audio": "es/rico.mp3" },
+          { "text": "mesa", "correct": false },
+          { "text": "cuenta", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f2-e6",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank to ask for the check",
+      "difficulty": 2,
+      "content": {
+        "sentence": "La ___, por favor.",
+        "blanks": [
+          {
+            "position": 0,
+            "correctAnswer": "cuenta",
+            "alternativeAnswers": ["Cuenta"],
+            "hint": "You say this when you want to pay"
+          }
+        ]
+      }
+    },
+    {
+      "id": "f2-e7",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "¿Tienen una mesa para dos?",
+        "sourceAudio": "es/mesa_para_dos.mp3",
+        "correctTranslation": "Do you have a table for two?",
+        "alternativeTranslations": ["Do you have a table for 2?"],
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "f2-e8",
+      "type": "multiple_choice",
+      "prompt": "'Quiero' vs 'quisiera' — which is more polite?",
+      "difficulty": 3,
+      "content": {
+        "question": "Which is the polite way to order?",
+        "options": [
+          { "text": "Quiero un café.", "correct": false },
+          { "text": "Quisiera un café.", "correct": true, "audio": "es/quisiera_cafe.mp3" },
+          { "text": "Dame un café.", "correct": false },
+          { "text": "Yo quero café.", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f2-e9",
+      "type": "word_bank",
+      "prompt": "Order your meal politely",
+      "difficulty": 3,
+      "content": {
+        "sentence": "{}, {} el menú, {} favor.",
+        "wordBank": [
+          { "text": "Disculpe", "correct": true, "position": 0 },
+          { "text": "quisiera", "correct": true, "position": 1 },
+          { "text": "por", "correct": true, "position": 2 },
+          { "text": "quiero", "correct": false },
+          { "text": "para", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f2-e10",
+      "type": "matching",
+      "prompt": "Order of service — match the phrase to when you'd say it",
+      "difficulty": 3,
+      "content": {
+        "pairs": [
+          { "source": "¿Tienen una mesa?", "target": "Arriving at restaurant" },
+          { "source": "El menú, por favor.", "target": "After being seated" },
+          { "source": "Quisiera el pollo.", "target": "Placing your order" },
+          { "source": "La cuenta, por favor.", "target": "Finishing your meal" }
+        ]
+      }
+    },
+    {
+      "id": "f2-e11",
+      "type": "fill_in_blank",
+      "prompt": "Complete the dialog",
+      "difficulty": 3,
+      "content": {
+        "sentence": "— ¿Qué ___ usted? — ___ el pollo con arroz, por favor.",
+        "blanks": [
+          { "position": 0, "correctAnswer": "desea", "alternativeAnswers": ["quiere", "quisiera"] },
+          { "position": 1, "correctAnswer": "Quisiera", "alternativeAnswers": ["Quiero"] }
+        ]
+      }
+    },
+    {
+      "id": "f2-e12",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 3,
+      "content": {
+        "sourceText": "Is this dish vegetarian?",
+        "correctTranslation": "¿Este plato es vegetariano?",
+        "alternativeTranslations": ["¿Es vegetariano este plato?"],
+        "direction": "target_to_source"
+      }
+    }
+  ]
+}

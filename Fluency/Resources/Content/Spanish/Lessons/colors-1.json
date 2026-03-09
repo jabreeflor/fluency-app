@@ -1,0 +1,196 @@
+{
+  "id": "colors-1",
+  "name": "Basic Colors",
+  "description": "Learn the primary and common colors in Spanish, including gender agreement",
+  "unit": "colors",
+  "order": 1,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "rojo/a", "translation": "red", "phonetic": "ROH-ho", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/rojo.mp3" },
+    { "word": "azul", "translation": "blue", "phonetic": "ah-SOOL", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/azul.mp3" },
+    { "word": "amarillo/a", "translation": "yellow", "phonetic": "ah-mah-REE-yo", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/amarillo.mp3" },
+    { "word": "verde", "translation": "green", "phonetic": "BER-deh", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/verde.mp3" },
+    { "word": "negro/a", "translation": "black", "phonetic": "NEH-gro", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/negro.mp3" },
+    { "word": "blanco/a", "translation": "white", "phonetic": "BLAHN-ko", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/blanco.mp3" },
+    { "word": "naranja", "translation": "orange", "phonetic": "nah-RAHN-ha", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/naranja.mp3" },
+    { "word": "morado/a", "translation": "purple", "phonetic": "mo-RAH-do", "partOfSpeech": "adjective", "difficulty": 2, "audio": "es/morado.mp3" },
+    { "word": "rosa", "translation": "pink", "phonetic": "ROH-sa", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/rosa.mp3" },
+    { "word": "marrón", "translation": "brown", "phonetic": "mah-RRON", "partOfSpeech": "adjective", "difficulty": 2, "audio": "es/marron.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "c1-e1",
+      "type": "multiple_choice",
+      "prompt": "What color is 'rojo'?",
+      "difficulty": 1,
+      "content": {
+        "question": "rojo",
+        "questionAudio": "es/rojo.mp3",
+        "options": [
+          { "text": "blue", "correct": false },
+          { "text": "green", "correct": false },
+          { "text": "red", "correct": true },
+          { "text": "yellow", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "c1-e2",
+      "type": "matching",
+      "prompt": "Match the color to its Spanish word",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "azul", "sourceAudio": "es/azul.mp3", "target": "blue" },
+          { "source": "verde", "sourceAudio": "es/verde.mp3", "target": "green" },
+          { "source": "negro", "sourceAudio": "es/negro.mp3", "target": "black" },
+          { "source": "blanco", "sourceAudio": "es/blanco.mp3", "target": "white" }
+        ]
+      }
+    },
+    {
+      "id": "c1-e3",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "yellow",
+        "correctTranslation": "amarillo",
+        "alternativeTranslations": ["amarilla"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "c1-e4",
+      "type": "multiple_choice",
+      "prompt": "How do you say 'orange' in Spanish?",
+      "difficulty": 1,
+      "content": {
+        "question": "orange (color)",
+        "options": [
+          { "text": "rosa", "correct": false },
+          { "text": "naranja", "correct": true, "audio": "es/naranja.mp3" },
+          { "text": "morado", "correct": false },
+          { "text": "marrón", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "c1-e5",
+      "type": "word_bank",
+      "prompt": "Describe: 'The apple is red'",
+      "difficulty": 2,
+      "content": {
+        "sentence": "La manzana es {}.",
+        "sentenceAudio": "es/manzana_roja.mp3",
+        "wordBank": [
+          { "text": "roja", "correct": true, "position": 0 },
+          { "text": "rojo", "correct": false },
+          { "text": "azul", "correct": false },
+          { "text": "verde", "correct": false }
+        ]
+      },
+      "hints": ["Manzana is feminine — the adjective must agree!"]
+    },
+    {
+      "id": "c1-e6",
+      "type": "multiple_choice",
+      "prompt": "Colors must agree with noun gender. 'El carro es ___' (the car is black)",
+      "difficulty": 2,
+      "content": {
+        "question": "El carro es ___ (black)",
+        "options": [
+          { "text": "negra", "correct": false },
+          { "text": "negro", "correct": true, "audio": "es/negro.mp3" },
+          { "text": "negros", "correct": false },
+          { "text": "negras", "correct": false }
+        ]
+      },
+      "hints": ["El carro = masculine, so use the masculine form"]
+    },
+    {
+      "id": "c1-e7",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "La flor es rosa.",
+        "sourceAudio": "es/flor_rosa.mp3",
+        "correctTranslation": "The flower is pink.",
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "c1-e8",
+      "type": "matching",
+      "prompt": "Match the object to its color",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "el cielo (sky)", "target": "azul" },
+          { "source": "la hierba (grass)", "target": "verde" },
+          { "source": "el sol (sun)", "target": "amarillo" },
+          { "source": "la noche (night)", "target": "negro" }
+        ]
+      }
+    },
+    {
+      "id": "c1-e9",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the correct color form",
+      "difficulty": 3,
+      "content": {
+        "sentence": "Tengo un gato ___ y una gata ___.",
+        "blanks": [
+          { "position": 0, "correctAnswer": "negro", "alternativeAnswers": [] },
+          { "position": 1, "correctAnswer": "blanca", "alternativeAnswers": [] }
+        ]
+      },
+      "hints": ["gato = masculine, gata = feminine"]
+    },
+    {
+      "id": "c1-e10",
+      "type": "multiple_choice",
+      "prompt": "What is 'morado'?",
+      "difficulty": 2,
+      "content": {
+        "question": "morado",
+        "questionAudio": "es/morado.mp3",
+        "options": [
+          { "text": "brown", "correct": false },
+          { "text": "pink", "correct": false },
+          { "text": "purple", "correct": true },
+          { "text": "orange", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "c1-e11",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 3,
+      "content": {
+        "sourceText": "I have a brown dog.",
+        "correctTranslation": "Tengo un perro marrón.",
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "c1-e12",
+      "type": "word_bank",
+      "prompt": "Describe your favorite color: 'My favorite color is blue'",
+      "difficulty": 3,
+      "content": {
+        "sentence": "Mi color {} es el {}.",
+        "wordBank": [
+          { "text": "favorito", "correct": true, "position": 0 },
+          { "text": "azul", "correct": true, "position": 1 },
+          { "text": "favorita", "correct": false },
+          { "text": "rojo", "correct": false },
+          { "text": "preferido", "correct": false }
+        ]
+      }
+    }
+  ]
+}

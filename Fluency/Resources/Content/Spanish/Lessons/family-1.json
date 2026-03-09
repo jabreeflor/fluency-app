@@ -1,0 +1,189 @@
+{
+  "id": "family-1",
+  "name": "Family Members",
+  "description": "Parents, siblings, and immediate family vocabulary",
+  "unit": "family",
+  "order": 1,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "la madre", "translation": "mother", "phonetic": "la MAH-dreh", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 1, "audio": "es/madre.mp3" },
+    { "word": "el padre", "translation": "father", "phonetic": "el PAH-dreh", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/padre.mp3" },
+    { "word": "el hermano", "translation": "brother", "phonetic": "el er-MAH-no", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/hermano.mp3" },
+    { "word": "la hermana", "translation": "sister", "phonetic": "la er-MAH-na", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 1, "audio": "es/hermana.mp3" },
+    { "word": "el abuelo", "translation": "grandfather", "phonetic": "el ah-BWEH-lo", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/abuelo.mp3" },
+    { "word": "la abuela", "translation": "grandmother", "phonetic": "la ah-BWEH-la", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 1, "audio": "es/abuela.mp3" },
+    { "word": "el hijo", "translation": "son", "phonetic": "el EE-ho", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/hijo.mp3" },
+    { "word": "la hija", "translation": "daughter", "phonetic": "la EE-ha", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 2, "audio": "es/hija.mp3" },
+    { "word": "el tío", "translation": "uncle", "phonetic": "el TEE-o", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/tio.mp3" },
+    { "word": "la tía", "translation": "aunt", "phonetic": "la TEE-a", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 2, "audio": "es/tia.mp3" },
+    { "word": "mi familia", "translation": "my family", "phonetic": "mee fa-MEE-lya", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/mi_familia.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "fam1-e1",
+      "type": "matching",
+      "prompt": "Match the family member to its meaning",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "la madre", "sourceAudio": "es/madre.mp3", "target": "mother" },
+          { "source": "el padre", "sourceAudio": "es/padre.mp3", "target": "father" },
+          { "source": "el hermano", "sourceAudio": "es/hermano.mp3", "target": "brother" },
+          { "source": "la hermana", "sourceAudio": "es/hermana.mp3", "target": "sister" }
+        ]
+      }
+    },
+    {
+      "id": "fam1-e2",
+      "type": "multiple_choice",
+      "prompt": "What does 'el abuelo' mean?",
+      "difficulty": 1,
+      "content": {
+        "question": "el abuelo",
+        "questionAudio": "es/abuelo.mp3",
+        "options": [
+          { "text": "uncle", "correct": false },
+          { "text": "father", "correct": false },
+          { "text": "grandfather", "correct": true },
+          { "text": "son", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "fam1-e3",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "my family",
+        "correctTranslation": "mi familia",
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "fam1-e4",
+      "type": "multiple_choice",
+      "prompt": "How do you say 'daughter' in Spanish?",
+      "difficulty": 2,
+      "content": {
+        "question": "daughter",
+        "options": [
+          { "text": "el hijo", "correct": false },
+          { "text": "la hermana", "correct": false },
+          { "text": "la hija", "correct": true, "audio": "es/hija.mp3" },
+          { "text": "la tía", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "fam1-e5",
+      "type": "word_bank",
+      "prompt": "Introduce your family: 'This is my mother and father'",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Esta es mi {} y este es mi {}.",
+        "wordBank": [
+          { "text": "madre", "correct": true, "position": 0 },
+          { "text": "padre", "correct": true, "position": 1 },
+          { "text": "hermana", "correct": false },
+          { "text": "abuela", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "fam1-e6",
+      "type": "matching",
+      "prompt": "Match the family pair (masculine / feminine)",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "el abuelo", "target": "la abuela" },
+          { "source": "el tío", "target": "la tía" },
+          { "source": "el hijo", "target": "la hija" },
+          { "source": "el hermano", "target": "la hermana" }
+        ]
+      }
+    },
+    {
+      "id": "fam1-e7",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "Tengo dos hermanos y una hermana.",
+        "sourceAudio": "es/dos_hermanos.mp3",
+        "correctTranslation": "I have two brothers and one sister.",
+        "alternativeTranslations": ["I have two brothers and a sister."],
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "fam1-e8",
+      "type": "fill_in_blank",
+      "prompt": "Complete the family introduction",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Mi ___ se llama Carlos y mi ___ se llama María.",
+        "blanks": [
+          { "position": 0, "correctAnswer": "padre", "alternativeAnswers": ["papá"] },
+          { "position": 1, "correctAnswer": "madre", "alternativeAnswers": ["mamá"] }
+        ]
+      }
+    },
+    {
+      "id": "fam1-e9",
+      "type": "multiple_choice",
+      "prompt": "Your mother's mother is your ___",
+      "difficulty": 2,
+      "content": {
+        "question": "Your mother's mother is your ___",
+        "options": [
+          { "text": "tía", "correct": false },
+          { "text": "abuela", "correct": true, "audio": "es/abuela.mp3" },
+          { "text": "hermana", "correct": false },
+          { "text": "hija", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "fam1-e10",
+      "type": "word_bank",
+      "prompt": "Build: 'My uncle and aunt live in Spain'",
+      "difficulty": 3,
+      "content": {
+        "sentence": "Mi {} y mi {} viven en España.",
+        "wordBank": [
+          { "text": "tío", "correct": true, "position": 0 },
+          { "text": "tía", "correct": true, "position": 1 },
+          { "text": "abuelo", "correct": false },
+          { "text": "hermano", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "fam1-e11",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 3,
+      "content": {
+        "sourceText": "My grandfather has three sons and two daughters.",
+        "correctTranslation": "Mi abuelo tiene tres hijos y dos hijas.",
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "fam1-e12",
+      "type": "fill_in_blank",
+      "prompt": "Describe your family size",
+      "difficulty": 3,
+      "content": {
+        "sentence": "Somos una familia grande. Tengo cuatro ___ y dos ___.",
+        "blanks": [
+          { "position": 0, "correctAnswer": "hermanos", "alternativeAnswers": [] },
+          { "position": 1, "correctAnswer": "abuelos", "alternativeAnswers": ["tíos"] }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "id": "shopping-1",
+  "name": "At the Store",
+  "description": "Shopping vocabulary — prices, asking for items, and transactions",
+  "unit": "shopping",
+  "order": 1,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "¿cuánto cuesta?", "translation": "how much does it cost?", "phonetic": "KWAHN-to KWES-ta", "partOfSpeech": "interjection", "difficulty": 1, "audio": "es/cuanto_cuesta.mp3" },
+    { "word": "caro/a", "translation": "expensive", "phonetic": "KAH-ro", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/caro.mp3" },
+    { "word": "barato/a", "translation": "cheap / affordable", "phonetic": "ba-RAH-to", "partOfSpeech": "adjective", "difficulty": 1, "audio": "es/barato.mp3" },
+    { "word": "la tienda", "translation": "store / shop", "phonetic": "la TYEHN-da", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 1, "audio": "es/tienda.mp3" },
+    { "word": "comprar", "translation": "to buy", "phonetic": "kom-PRAR", "partOfSpeech": "verb", "difficulty": 1, "audio": "es/comprar.mp3" },
+    { "word": "el precio", "translation": "the price", "phonetic": "el PREH-syo", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/precio.mp3" },
+    { "word": "el descuento", "translation": "discount / sale", "phonetic": "el des-KWEHN-to", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/descuento.mp3" },
+    { "word": "¿tiene esto en otra talla?", "translation": "do you have this in another size?", "phonetic": "TYEH-neh ES-to en O-tra TAH-ya", "partOfSpeech": "interjection", "difficulty": 3, "audio": "es/otra_talla.mp3" },
+    { "word": "el efectivo", "translation": "cash", "phonetic": "el e-fek-TEE-vo", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/efectivo.mp3" },
+    { "word": "la tarjeta de crédito", "translation": "credit card", "phonetic": "la tar-HEH-ta de KREH-dee-to", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 2, "audio": "es/tarjeta_credito.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "sh1-e1",
+      "type": "multiple_choice",
+      "prompt": "How do you ask 'how much does it cost?'",
+      "difficulty": 1,
+      "content": {
+        "question": "how much does it cost?",
+        "options": [
+          { "text": "¿Dónde está?", "correct": false },
+          { "text": "¿Cuánto cuesta?", "correct": true, "audio": "es/cuanto_cuesta.mp3" },
+          { "text": "¿Qué es esto?", "correct": false },
+          { "text": "¿Puedo ayudar?", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "sh1-e2",
+      "type": "matching",
+      "prompt": "Match the shopping words",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "caro", "sourceAudio": "es/caro.mp3", "target": "expensive" },
+          { "source": "barato", "sourceAudio": "es/barato.mp3", "target": "cheap" },
+          { "source": "la tienda", "sourceAudio": "es/tienda.mp3", "target": "store" },
+          { "source": "comprar", "sourceAudio": "es/comprar.mp3", "target": "to buy" }
+        ]
+      }
+    },
+    {
+      "id": "sh1-e3",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "the price",
+        "correctTranslation": "el precio",
+        "alternativeTranslations": ["precio"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "sh1-e4",
+      "type": "multiple_choice",
+      "prompt": "The shirt costs $5. A friend says it's 'muy barata'. She means...",
+      "difficulty": 2,
+      "content": {
+        "question": "muy barata means...",
+        "options": [
+          { "text": "very expensive", "correct": false },
+          { "text": "very cheap / affordable", "correct": true },
+          { "text": "out of stock", "correct": false },
+          { "text": "on sale", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "sh1-e5",
+      "type": "word_bank",
+      "prompt": "Ask for the price: '___?'",
+      "difficulty": 2,
+      "content": {
+        "sentence": "¿{} {}?",
+        "wordBank": [
+          { "text": "Cuánto", "correct": true, "position": 0 },
+          { "text": "cuesta", "correct": true, "position": 1 },
+          { "text": "Cómo", "correct": false },
+          { "text": "tiene", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "sh1-e6",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "Quiero comprar esta camisa, pero es muy cara.",
+        "sourceAudio": "es/camisa_cara.mp3",
+        "correctTranslation": "I want to buy this shirt, but it's very expensive.",
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "sh1-e7",
+      "type": "fill_in_blank",
+      "prompt": "Complete the shopping dialog",
+      "difficulty": 2,
+      "content": {
+        "sentence": "— ¿___ cuesta esta chaqueta? — Cuesta ochenta euros.",
+        "blanks": [
+          { "position": 0, "correctAnswer": "Cuánto", "alternativeAnswers": ["cuánto"] }
+        ]
+      }
+    },
+    {
+      "id": "sh1-e8",
+      "type": "multiple_choice",
+      "prompt": "You want to pay with your card. You say...",
+      "difficulty": 2,
+      "content": {
+        "question": "I want to pay by card",
+        "options": [
+          { "text": "Pago en efectivo.", "correct": false },
+          { "text": "Pago con tarjeta.", "correct": true, "audio": "es/pago_tarjeta.mp3" },
+          { "text": "No tengo dinero.", "correct": false },
+          { "text": "Es muy caro.", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "sh1-e9",
+      "type": "matching",
+      "prompt": "Match the shopping scenario",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "¿Cuánto cuesta?", "target": "Asking for the price" },
+          { "source": "Pago en efectivo.", "target": "Paying with cash" },
+          { "source": "¿Hay descuento?", "target": "Asking for a discount" },
+          { "source": "Me lo llevo.", "target": "I'll take it" }
+        ]
+      }
+    },
+    {
+      "id": "sh1-e10",
+      "type": "word_bank",
+      "prompt": "Negotiate: 'Is there a discount?'",
+      "difficulty": 3,
+      "content": {
+        "sentence": "¿{} {}?",
+        "wordBank": [
+          { "text": "Hay", "correct": true, "position": 0 },
+          { "text": "descuento", "correct": true, "position": 1 },
+          { "text": "precio", "correct": false },
+          { "text": "Tiene", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "sh1-e11",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 3,
+      "content": {
+        "sourceText": "I'm looking for a cheap store near here.",
+        "correctTranslation": "Busco una tienda barata cerca de aquí.",
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "sh1-e12",
+      "type": "fill_in_blank",
+      "prompt": "Complete the purchase",
+      "difficulty": 3,
+      "content": {
+        "sentence": "Me ___ estos zapatos. ¿Puedo ___ con tarjeta?",
+        "blanks": [
+          { "position": 0, "correctAnswer": "llevo", "alternativeAnswers": ["quedo con"] },
+          { "position": 1, "correctAnswer": "pagar", "alternativeAnswers": ["pago"] }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "id": "weather-1",
+  "name": "Weather Conditions",
+  "description": "Describe the weather in Spanish using 'hace', 'está', and 'hay'",
+  "unit": "weather",
+  "order": 1,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "hace calor", "translation": "it's hot", "phonetic": "AH-seh ka-LOR", "partOfSpeech": "verb", "difficulty": 1, "audio": "es/hace_calor.mp3" },
+    { "word": "hace frío", "translation": "it's cold", "phonetic": "AH-seh FREE-o", "partOfSpeech": "verb", "difficulty": 1, "audio": "es/hace_frio.mp3" },
+    { "word": "hace sol", "translation": "it's sunny", "phonetic": "AH-seh sol", "partOfSpeech": "verb", "difficulty": 1, "audio": "es/hace_sol.mp3" },
+    { "word": "hace viento", "translation": "it's windy", "phonetic": "AH-seh BYEHN-to", "partOfSpeech": "verb", "difficulty": 2, "audio": "es/hace_viento.mp3" },
+    { "word": "llueve", "translation": "it's raining", "phonetic": "YWEH-veh", "partOfSpeech": "verb", "difficulty": 2, "audio": "es/llueve.mp3" },
+    { "word": "nieva", "translation": "it's snowing", "phonetic": "NYEH-ba", "partOfSpeech": "verb", "difficulty": 2, "audio": "es/nieva.mp3" },
+    { "word": "está nublado", "translation": "it's cloudy", "phonetic": "es-TAH noo-BLAH-do", "partOfSpeech": "verb", "difficulty": 2, "audio": "es/nublado.mp3" },
+    { "word": "el tiempo", "translation": "the weather", "phonetic": "el TYEHM-po", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/tiempo.mp3" },
+    { "word": "la temperatura", "translation": "the temperature", "phonetic": "la tem-peh-rah-TOO-rah", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 2, "audio": "es/temperatura.mp3" },
+    { "word": "¿qué tiempo hace?", "translation": "what's the weather like?", "phonetic": "keh TYEHM-po AH-seh", "partOfSpeech": "interjection", "difficulty": 2, "audio": "es/que_tiempo_hace.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "w1-e1",
+      "type": "multiple_choice",
+      "prompt": "What does 'hace calor' mean?",
+      "difficulty": 1,
+      "content": {
+        "question": "hace calor",
+        "questionAudio": "es/hace_calor.mp3",
+        "options": [
+          { "text": "it's cold", "correct": false },
+          { "text": "it's windy", "correct": false },
+          { "text": "it's hot", "correct": true },
+          { "text": "it's raining", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "w1-e2",
+      "type": "matching",
+      "prompt": "Match the weather to its Spanish expression",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "hace frío", "sourceAudio": "es/hace_frio.mp3", "target": "it's cold" },
+          { "source": "hace sol", "sourceAudio": "es/hace_sol.mp3", "target": "it's sunny" },
+          { "source": "llueve", "sourceAudio": "es/llueve.mp3", "target": "it's raining" },
+          { "source": "nieva", "sourceAudio": "es/nieva.mp3", "target": "it's snowing" }
+        ]
+      }
+    },
+    {
+      "id": "w1-e3",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "what's the weather like?",
+        "correctTranslation": "¿Qué tiempo hace?",
+        "alternativeTranslations": ["¿que tiempo hace?"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "w1-e4",
+      "type": "multiple_choice",
+      "prompt": "It's a beach day! Which phrase describes this?",
+      "difficulty": 1,
+      "content": {
+        "question": "Perfect beach weather",
+        "options": [
+          { "text": "Hace frío y llueve.", "correct": false },
+          { "text": "Nieva mucho.", "correct": false },
+          { "text": "Hace calor y sol.", "correct": true, "audio": "es/hace_calor_sol.mp3" },
+          { "text": "Está nublado.", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "w1-e5",
+      "type": "word_bank",
+      "prompt": "Describe: 'Today it's cloudy and cold'",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Hoy {} nublado y {} frío.",
+        "wordBank": [
+          { "text": "está", "correct": true, "position": 0 },
+          { "text": "hace", "correct": true, "position": 1 },
+          { "text": "hay", "correct": false },
+          { "text": "llueve", "correct": false },
+          { "text": "es", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "w1-e6",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "Hace mucho viento hoy.",
+        "sourceAudio": "es/hace_viento_hoy.mp3",
+        "correctTranslation": "It's very windy today.",
+        "alternativeTranslations": ["It is very windy today."],
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "w1-e7",
+      "type": "fill_in_blank",
+      "prompt": "Complete the weather report",
+      "difficulty": 2,
+      "content": {
+        "sentence": "En invierno ___ mucho y ___. En verano ___ calor.",
+        "blanks": [
+          { "position": 0, "correctAnswer": "nieva", "alternativeAnswers": ["llueve"] },
+          { "position": 1, "correctAnswer": "hace frío", "alternativeAnswers": ["hace mucho frío"] },
+          { "position": 2, "correctAnswer": "hace", "alternativeAnswers": [] }
+        ]
+      }
+    },
+    {
+      "id": "w1-e8",
+      "type": "matching",
+      "prompt": "Match the season to its typical weather",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "el verano (summer)", "target": "hace calor y sol" },
+          { "source": "el invierno (winter)", "target": "hace frío y nieva" },
+          { "source": "la primavera (spring)", "target": "llueve y hace fresco" },
+          { "source": "el otoño (autumn)", "target": "hace viento y está nublado" }
+        ]
+      }
+    },
+    {
+      "id": "w1-e9",
+      "type": "multiple_choice",
+      "prompt": "What does 'está nublado' mean?",
+      "difficulty": 2,
+      "content": {
+        "question": "está nublado",
+        "questionAudio": "es/nublado.mp3",
+        "options": [
+          { "text": "it's snowing", "correct": false },
+          { "text": "it's foggy", "correct": false },
+          { "text": "it's cloudy", "correct": true },
+          { "text": "it's hot", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "w1-e10",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 3,
+      "content": {
+        "sourceText": "It's raining a lot today. Take an umbrella!",
+        "correctTranslation": "Llueve mucho hoy. ¡Lleva un paraguas!",
+        "alternativeTranslations": ["Hoy llueve mucho. ¡Lleva un paraguas!"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "w1-e11",
+      "type": "word_bank",
+      "prompt": "Describe your ideal weather",
+      "difficulty": 3,
+      "content": {
+        "sentence": "Me gusta cuando {} sol y {} calor.",
+        "wordBank": [
+          { "text": "hace", "correct": true, "position": 0 },
+          { "text": "hace", "correct": true, "position": 1 },
+          { "text": "llueve", "correct": false },
+          { "text": "nieva", "correct": false },
+          { "text": "está", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "w1-e12",
+      "type": "fill_in_blank",
+      "prompt": "Ask about the weather in Madrid",
+      "difficulty": 3,
+      "content": {
+        "sentence": "¿___ ___ hace en Madrid en agosto?",
+        "blanks": [
+          { "position": 0, "correctAnswer": "Qué", "alternativeAnswers": ["qué"] },
+          { "position": 1, "correctAnswer": "tiempo", "alternativeAnswers": [] }
+        ]
+      }
+    }
+  ]
+}

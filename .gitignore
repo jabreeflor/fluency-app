@@ -1,0 +1,35 @@
+# Xcode
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+# Build
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# CocoaPods
+Pods/
+
+# SPM
+.build/
+*.resolved
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+
+# project.yml (xcodegen config, keep)
+# project.yml

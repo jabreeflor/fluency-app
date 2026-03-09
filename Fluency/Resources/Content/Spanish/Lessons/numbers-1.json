@@ -1,0 +1,197 @@
+{
+  "id": "numbers-1",
+  "name": "Numbers 1–20",
+  "description": "Count from 1 to 20 in Spanish",
+  "unit": "numbers",
+  "order": 1,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "uno", "translation": "one", "phonetic": "OO-no", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/uno.mp3" },
+    { "word": "dos", "translation": "two", "phonetic": "dohs", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/dos.mp3" },
+    { "word": "tres", "translation": "three", "phonetic": "trehs", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/tres.mp3" },
+    { "word": "cuatro", "translation": "four", "phonetic": "KWAH-tro", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/cuatro.mp3" },
+    { "word": "cinco", "translation": "five", "phonetic": "SEEN-ko", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/cinco.mp3" },
+    { "word": "seis", "translation": "six", "phonetic": "says", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/seis.mp3" },
+    { "word": "siete", "translation": "seven", "phonetic": "SYEH-teh", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/siete.mp3" },
+    { "word": "ocho", "translation": "eight", "phonetic": "OH-cho", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/ocho.mp3" },
+    { "word": "nueve", "translation": "nine", "phonetic": "NWEH-veh", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/nueve.mp3" },
+    { "word": "diez", "translation": "ten", "phonetic": "dyehs", "partOfSpeech": "noun", "difficulty": 1, "audio": "es/diez.mp3" },
+    { "word": "once", "translation": "eleven", "phonetic": "ON-seh", "partOfSpeech": "noun", "difficulty": 2, "audio": "es/once.mp3" },
+    { "word": "doce", "translation": "twelve", "phonetic": "DOH-seh", "partOfSpeech": "noun", "difficulty": 2, "audio": "es/doce.mp3" },
+    { "word": "quince", "translation": "fifteen", "phonetic": "KEEN-seh", "partOfSpeech": "noun", "difficulty": 2, "audio": "es/quince.mp3" },
+    { "word": "veinte", "translation": "twenty", "phonetic": "BAYN-teh", "partOfSpeech": "noun", "difficulty": 2, "audio": "es/veinte.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "n1-e1",
+      "type": "matching",
+      "prompt": "Match the number to its Spanish word",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "1", "target": "uno" },
+          { "source": "3", "target": "tres" },
+          { "source": "5", "target": "cinco" },
+          { "source": "8", "target": "ocho" }
+        ]
+      }
+    },
+    {
+      "id": "n1-e2",
+      "type": "multiple_choice",
+      "prompt": "What number is 'siete'?",
+      "difficulty": 1,
+      "content": {
+        "question": "siete",
+        "questionAudio": "es/siete.mp3",
+        "options": [
+          { "text": "6", "correct": false },
+          { "text": "7", "correct": true },
+          { "text": "8", "correct": false },
+          { "text": "9", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "n1-e3",
+      "type": "multiple_choice",
+      "prompt": "How do you say '4' in Spanish?",
+      "difficulty": 1,
+      "content": {
+        "question": "4",
+        "options": [
+          { "text": "cinco", "correct": false },
+          { "text": "tres", "correct": false },
+          { "text": "cuatro", "correct": true, "audio": "es/cuatro.mp3" },
+          { "text": "seis", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "n1-e4",
+      "type": "matching",
+      "prompt": "Match 6–10",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "6", "target": "seis" },
+          { "source": "7", "target": "siete" },
+          { "source": "9", "target": "nueve" },
+          { "source": "10", "target": "diez" }
+        ]
+      }
+    },
+    {
+      "id": "n1-e5",
+      "type": "fill_in_blank",
+      "prompt": "Complete the sequence",
+      "difficulty": 2,
+      "content": {
+        "sentence": "uno, dos, tres, ___, cinco",
+        "blanks": [
+          { "position": 0, "correctAnswer": "cuatro", "alternativeAnswers": ["Cuatro"] }
+        ]
+      }
+    },
+    {
+      "id": "n1-e6",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "ten",
+        "correctTranslation": "diez",
+        "alternativeTranslations": ["Diez"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "n1-e7",
+      "type": "multiple_choice",
+      "prompt": "What is 'doce' in English?",
+      "difficulty": 2,
+      "content": {
+        "question": "doce",
+        "questionAudio": "es/doce.mp3",
+        "options": [
+          { "text": "ten", "correct": false },
+          { "text": "eleven", "correct": false },
+          { "text": "twelve", "correct": true },
+          { "text": "thirteen", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "n1-e8",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the sequence",
+      "difficulty": 2,
+      "content": {
+        "sentence": "diez, ___, doce, trece, catorce, ___",
+        "blanks": [
+          { "position": 0, "correctAnswer": "once", "alternativeAnswers": ["Once"] },
+          { "position": 1, "correctAnswer": "quince", "alternativeAnswers": ["Quince"] }
+        ]
+      }
+    },
+    {
+      "id": "n1-e9",
+      "type": "word_bank",
+      "prompt": "Put the numbers in order: 6, 7, 8",
+      "difficulty": 2,
+      "content": {
+        "sentence": "{}, {}, {}",
+        "wordBank": [
+          { "text": "seis", "correct": true, "position": 0 },
+          { "text": "siete", "correct": true, "position": 1 },
+          { "text": "ocho", "correct": true, "position": 2 },
+          { "text": "nueve", "correct": false },
+          { "text": "cinco", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "n1-e10",
+      "type": "multiple_choice",
+      "prompt": "What is 3 + 4 in Spanish?",
+      "difficulty": 2,
+      "content": {
+        "question": "tres + cuatro = ?",
+        "options": [
+          { "text": "seis", "correct": false },
+          { "text": "siete", "correct": true, "audio": "es/siete.mp3" },
+          { "text": "ocho", "correct": false },
+          { "text": "nueve", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "n1-e11",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "fifteen",
+        "correctTranslation": "quince",
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "n1-e12",
+      "type": "multiple_choice",
+      "prompt": "What is 'veinte'?",
+      "difficulty": 2,
+      "content": {
+        "question": "veinte",
+        "questionAudio": "es/veinte.mp3",
+        "options": [
+          { "text": "12", "correct": false },
+          { "text": "15", "correct": false },
+          { "text": "18", "correct": false },
+          { "text": "20", "correct": true }
+        ]
+      }
+    }
+  ]
+}

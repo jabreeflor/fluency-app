@@ -1,0 +1,203 @@
+{
+  "id": "greetings-1",
+  "name": "Hello & Goodbye",
+  "description": "Learn basic Spanish greetings and farewells",
+  "unit": "greetings",
+  "order": 1,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "hola", "translation": "hello", "phonetic": "OH-lah", "partOfSpeech": "interjection", "difficulty": 1, "audio": "es/hola.mp3" },
+    { "word": "adiós", "translation": "goodbye", "phonetic": "ah-DYOS", "partOfSpeech": "interjection", "difficulty": 1, "audio": "es/adios.mp3" },
+    { "word": "buenos días", "translation": "good morning", "phonetic": "BWEH-nos DEE-as", "partOfSpeech": "interjection", "difficulty": 1, "audio": "es/buenos_dias.mp3" },
+    { "word": "buenas tardes", "translation": "good afternoon", "phonetic": "BWEH-nas TAR-des", "partOfSpeech": "interjection", "difficulty": 1, "audio": "es/buenas_tardes.mp3" },
+    { "word": "buenas noches", "translation": "good evening / good night", "phonetic": "BWEH-nas NO-ches", "partOfSpeech": "interjection", "difficulty": 1, "audio": "es/buenas_noches.mp3" },
+    { "word": "hasta luego", "translation": "see you later", "phonetic": "AHS-tah LWEH-go", "partOfSpeech": "interjection", "difficulty": 2, "audio": "es/hasta_luego.mp3" },
+    { "word": "hasta mañana", "translation": "see you tomorrow", "phonetic": "AHS-tah mah-NYAH-nah", "partOfSpeech": "interjection", "difficulty": 2, "audio": "es/hasta_manana.mp3" },
+    { "word": "por favor", "translation": "please", "phonetic": "por fah-VOR", "partOfSpeech": "adverb", "difficulty": 1, "audio": "es/por_favor.mp3" },
+    { "word": "gracias", "translation": "thank you", "phonetic": "GRAH-syahs", "partOfSpeech": "interjection", "difficulty": 1, "audio": "es/gracias.mp3" },
+    { "word": "de nada", "translation": "you're welcome", "phonetic": "deh NAH-dah", "partOfSpeech": "interjection", "difficulty": 1, "audio": "es/de_nada.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "g1-e1",
+      "type": "multiple_choice",
+      "prompt": "What does 'hola' mean?",
+      "difficulty": 1,
+      "content": {
+        "question": "hola",
+        "questionAudio": "es/hola.mp3",
+        "options": [
+          { "text": "goodbye", "correct": false },
+          { "text": "hello", "correct": true },
+          { "text": "thank you", "correct": false },
+          { "text": "please", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "g1-e2",
+      "type": "multiple_choice",
+      "prompt": "How do you say 'good morning' in Spanish?",
+      "difficulty": 1,
+      "content": {
+        "question": "good morning",
+        "options": [
+          { "text": "buenas noches", "correct": false },
+          { "text": "buenas tardes", "correct": false },
+          { "text": "buenos días", "correct": true, "audio": "es/buenos_dias.mp3" },
+          { "text": "hasta luego", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "g1-e3",
+      "type": "matching",
+      "prompt": "Match each Spanish word to its meaning",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "hola", "sourceAudio": "es/hola.mp3", "target": "hello" },
+          { "source": "adiós", "sourceAudio": "es/adios.mp3", "target": "goodbye" },
+          { "source": "gracias", "sourceAudio": "es/gracias.mp3", "target": "thank you" },
+          { "source": "por favor", "sourceAudio": "es/por_favor.mp3", "target": "please" }
+        ]
+      }
+    },
+    {
+      "id": "g1-e4",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "goodbye",
+        "correctTranslation": "adiós",
+        "alternativeTranslations": ["adios"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "g1-e5",
+      "type": "word_bank",
+      "prompt": "Build the sentence using the word bank",
+      "difficulty": 1,
+      "content": {
+        "sentence": "{} {}",
+        "sentenceAudio": "es/buenos_dias.mp3",
+        "wordBank": [
+          { "text": "buenos", "correct": true, "position": 0 },
+          { "text": "días", "correct": true, "position": 1 },
+          { "text": "noches", "correct": false },
+          { "text": "tardes", "correct": false },
+          { "text": "hola", "correct": false }
+        ]
+      },
+      "hints": ["This means 'good morning'"]
+    },
+    {
+      "id": "g1-e6",
+      "type": "multiple_choice",
+      "prompt": "What does 'buenas noches' mean?",
+      "difficulty": 1,
+      "content": {
+        "question": "buenas noches",
+        "questionAudio": "es/buenas_noches.mp3",
+        "options": [
+          { "text": "good morning", "correct": false },
+          { "text": "good afternoon", "correct": false },
+          { "text": "good evening / good night", "correct": true },
+          { "text": "see you later", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "g1-e7",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "hasta luego",
+        "sourceAudio": "es/hasta_luego.mp3",
+        "correctTranslation": "see you later",
+        "alternativeTranslations": ["bye", "see ya", "later"],
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "g1-e8",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank",
+      "difficulty": 2,
+      "content": {
+        "sentence": "___ días. ¿Cómo estás?",
+        "blanks": [
+          {
+            "position": 0,
+            "correctAnswer": "Buenos",
+            "alternativeAnswers": ["buenos"],
+            "hint": "Good ___"
+          }
+        ]
+      }
+    },
+    {
+      "id": "g1-e9",
+      "type": "matching",
+      "prompt": "Match the greeting to the time of day",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "buenos días", "target": "morning (6am-12pm)" },
+          { "source": "buenas tardes", "target": "afternoon (12pm-8pm)" },
+          { "source": "buenas noches", "target": "night (8pm+)" },
+          { "source": "hasta mañana", "target": "see you tomorrow" }
+        ]
+      }
+    },
+    {
+      "id": "g1-e10",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "you're welcome",
+        "correctTranslation": "de nada",
+        "alternativeTranslations": ["De nada"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "g1-e11",
+      "type": "word_bank",
+      "prompt": "Build the sentence",
+      "difficulty": 2,
+      "content": {
+        "sentence": "{} {}",
+        "sentenceAudio": "es/hasta_manana.mp3",
+        "wordBank": [
+          { "text": "hasta", "correct": true, "position": 0 },
+          { "text": "mañana", "correct": true, "position": 1 },
+          { "text": "luego", "correct": false },
+          { "text": "adiós", "correct": false }
+        ]
+      },
+      "hints": ["This means 'see you tomorrow'"]
+    },
+    {
+      "id": "g1-e12",
+      "type": "multiple_choice",
+      "prompt": "Someone says 'gracias' — what do you reply?",
+      "difficulty": 2,
+      "content": {
+        "question": "gracias",
+        "questionAudio": "es/gracias.mp3",
+        "options": [
+          { "text": "por favor", "correct": false },
+          { "text": "hola", "correct": false },
+          { "text": "de nada", "correct": true, "audio": "es/de_nada.mp3" },
+          { "text": "adiós", "correct": false }
+        ]
+      }
+    }
+  ]
+}

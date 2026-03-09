@@ -1,0 +1,202 @@
+{
+  "id": "food-1",
+  "name": "Basic Foods",
+  "description": "Common foods, drinks, and the verbs 'to eat' and 'to drink'",
+  "unit": "food",
+  "order": 1,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "el pan", "translation": "bread", "phonetic": "el pan", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/pan.mp3" },
+    { "word": "la leche", "translation": "milk", "phonetic": "la LEH-cheh", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 1, "audio": "es/leche.mp3" },
+    { "word": "el agua", "translation": "water", "phonetic": "el AH-gwa", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/agua.mp3" },
+    { "word": "el café", "translation": "coffee", "phonetic": "el kah-FEH", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/cafe.mp3" },
+    { "word": "la manzana", "translation": "apple", "phonetic": "la man-SAH-na", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 1, "audio": "es/manzana.mp3" },
+    { "word": "el pollo", "translation": "chicken", "phonetic": "el POH-yo", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/pollo.mp3" },
+    { "word": "el arroz", "translation": "rice", "phonetic": "el ah-ROHS", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/arroz.mp3" },
+    { "word": "comer", "translation": "to eat", "phonetic": "ko-MER", "partOfSpeech": "verb", "difficulty": 1, "audio": "es/comer.mp3" },
+    { "word": "beber", "translation": "to drink", "phonetic": "beh-BER", "partOfSpeech": "verb", "difficulty": 1, "audio": "es/beber.mp3" },
+    { "word": "el desayuno", "translation": "breakfast", "phonetic": "el deh-sa-YOO-no", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/desayuno.mp3" },
+    { "word": "el almuerzo", "translation": "lunch", "phonetic": "el al-MWER-so", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/almuerzo.mp3" },
+    { "word": "la cena", "translation": "dinner", "phonetic": "la SEH-na", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 2, "audio": "es/cena.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "f1-e1",
+      "type": "multiple_choice",
+      "prompt": "What does 'el pan' mean?",
+      "difficulty": 1,
+      "content": {
+        "question": "el pan",
+        "questionAudio": "es/pan.mp3",
+        "options": [
+          { "text": "milk", "correct": false },
+          { "text": "water", "correct": false },
+          { "text": "bread", "correct": true },
+          { "text": "apple", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f1-e2",
+      "type": "matching",
+      "prompt": "Match the food to its Spanish name",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "la leche", "sourceAudio": "es/leche.mp3", "target": "milk" },
+          { "source": "el agua", "sourceAudio": "es/agua.mp3", "target": "water" },
+          { "source": "el café", "sourceAudio": "es/cafe.mp3", "target": "coffee" },
+          { "source": "la manzana", "sourceAudio": "es/manzana.mp3", "target": "apple" }
+        ]
+      }
+    },
+    {
+      "id": "f1-e3",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "chicken",
+        "correctTranslation": "el pollo",
+        "alternativeTranslations": ["pollo"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "f1-e4",
+      "type": "multiple_choice",
+      "prompt": "Which word means 'to eat'?",
+      "difficulty": 1,
+      "content": {
+        "question": "to eat",
+        "options": [
+          { "text": "beber", "correct": false },
+          { "text": "hablar", "correct": false },
+          { "text": "comer", "correct": true, "audio": "es/comer.mp3" },
+          { "text": "dormir", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f1-e5",
+      "type": "word_bank",
+      "prompt": "Build the sentence: 'I eat bread'",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Yo {} {}.",
+        "sentenceAudio": "es/yo_como_pan.mp3",
+        "wordBank": [
+          { "text": "como", "correct": true, "position": 0 },
+          { "text": "pan", "correct": true, "position": 1 },
+          { "text": "bebo", "correct": false },
+          { "text": "leche", "correct": false },
+          { "text": "arroz", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f1-e6",
+      "type": "multiple_choice",
+      "prompt": "What does 'el desayuno' mean?",
+      "difficulty": 2,
+      "content": {
+        "question": "el desayuno",
+        "questionAudio": "es/desayuno.mp3",
+        "options": [
+          { "text": "lunch", "correct": false },
+          { "text": "dinner", "correct": false },
+          { "text": "breakfast", "correct": true },
+          { "text": "snack", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f1-e7",
+      "type": "matching",
+      "prompt": "Match the meal to the time of day",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "el desayuno", "target": "morning meal" },
+          { "source": "el almuerzo", "target": "midday meal" },
+          { "source": "la cena", "target": "evening meal" },
+          { "source": "el café", "target": "coffee" }
+        ]
+      }
+    },
+    {
+      "id": "f1-e8",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "Yo bebo leche.",
+        "sourceAudio": "es/yo_bebo_leche.mp3",
+        "correctTranslation": "I drink milk.",
+        "alternativeTranslations": ["I am drinking milk."],
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "f1-e9",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Para el desayuno, como ___ y bebo café.",
+        "blanks": [
+          {
+            "position": 0,
+            "correctAnswer": "pan",
+            "alternativeAnswers": ["una manzana", "arroz"],
+            "hint": "A common breakfast food"
+          }
+        ]
+      }
+    },
+    {
+      "id": "f1-e10",
+      "type": "multiple_choice",
+      "prompt": "How do you say 'rice' in Spanish?",
+      "difficulty": 1,
+      "content": {
+        "question": "rice",
+        "options": [
+          { "text": "el pollo", "correct": false },
+          { "text": "el pan", "correct": false },
+          { "text": "la leche", "correct": false },
+          { "text": "el arroz", "correct": true, "audio": "es/arroz.mp3" }
+        ]
+      }
+    },
+    {
+      "id": "f1-e11",
+      "type": "word_bank",
+      "prompt": "Build: 'She drinks coffee for breakfast'",
+      "difficulty": 3,
+      "content": {
+        "sentence": "Ella {} {} para el {}.",
+        "wordBank": [
+          { "text": "bebe", "correct": true, "position": 0 },
+          { "text": "café", "correct": true, "position": 1 },
+          { "text": "desayuno", "correct": true, "position": 2 },
+          { "text": "come", "correct": false },
+          { "text": "cena", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "f1-e12",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 3,
+      "content": {
+        "sourceText": "We eat rice and chicken for dinner.",
+        "correctTranslation": "Comemos arroz y pollo para la cena.",
+        "alternativeTranslations": ["Comemos pollo y arroz para la cena."],
+        "direction": "target_to_source"
+      }
+    }
+  ]
+}

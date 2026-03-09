@@ -1,0 +1,196 @@
+{
+  "id": "travel-1",
+  "name": "Transportation",
+  "description": "Modes of transport and travel vocabulary in Spanish",
+  "unit": "travel",
+  "order": 1,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "el avión", "translation": "airplane", "phonetic": "el ah-BYOHN", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/avion.mp3" },
+    { "word": "el tren", "translation": "train", "phonetic": "el trehn", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/tren.mp3" },
+    { "word": "el autobús", "translation": "bus", "phonetic": "el ow-to-BOOS", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/autobus.mp3" },
+    { "word": "el coche / el carro", "translation": "car", "phonetic": "el KO-cheh", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/coche.mp3" },
+    { "word": "el metro", "translation": "subway / underground", "phonetic": "el MEH-tro", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/metro.mp3" },
+    { "word": "el taxi", "translation": "taxi", "phonetic": "el TAHK-see", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/taxi.mp3" },
+    { "word": "el billete", "translation": "ticket", "phonetic": "el bee-YEH-teh", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/billete.mp3" },
+    { "word": "la estación", "translation": "station", "phonetic": "la es-ta-SYOHN", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 2, "audio": "es/estacion.mp3" },
+    { "word": "viajar", "translation": "to travel", "phonetic": "bya-HAR", "partOfSpeech": "verb", "difficulty": 2, "audio": "es/viajar.mp3" },
+    { "word": "el aeropuerto", "translation": "airport", "phonetic": "el ah-eh-ro-PWER-to", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/aeropuerto.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "t1-e1",
+      "type": "matching",
+      "prompt": "Match the transport to its Spanish word",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "el avión", "sourceAudio": "es/avion.mp3", "target": "airplane" },
+          { "source": "el tren", "sourceAudio": "es/tren.mp3", "target": "train" },
+          { "source": "el autobús", "sourceAudio": "es/autobus.mp3", "target": "bus" },
+          { "source": "el metro", "sourceAudio": "es/metro.mp3", "target": "subway" }
+        ]
+      }
+    },
+    {
+      "id": "t1-e2",
+      "type": "multiple_choice",
+      "prompt": "What does 'el aeropuerto' mean?",
+      "difficulty": 1,
+      "content": {
+        "question": "el aeropuerto",
+        "questionAudio": "es/aeropuerto.mp3",
+        "options": [
+          { "text": "train station", "correct": false },
+          { "text": "bus stop", "correct": false },
+          { "text": "airport", "correct": true },
+          { "text": "harbor", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "t1-e3",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "ticket",
+        "correctTranslation": "el billete",
+        "alternativeTranslations": ["billete", "el boleto", "boleto"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "t1-e4",
+      "type": "multiple_choice",
+      "prompt": "You're at 'la estación de tren' — where are you?",
+      "difficulty": 2,
+      "content": {
+        "question": "la estación de tren",
+        "questionAudio": "es/estacion_tren.mp3",
+        "options": [
+          { "text": "bus terminal", "correct": false },
+          { "text": "airport", "correct": false },
+          { "text": "train station", "correct": true },
+          { "text": "subway entrance", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "t1-e5",
+      "type": "word_bank",
+      "prompt": "Build: 'I travel by airplane'",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Viajo en {}.",
+        "sentenceAudio": "es/viajo_avion.mp3",
+        "wordBank": [
+          { "text": "avión", "correct": true, "position": 0 },
+          { "text": "tren", "correct": false },
+          { "text": "taxi", "correct": false },
+          { "text": "coche", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "t1-e6",
+      "type": "matching",
+      "prompt": "Match the transport to how you'd use it",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "el avión", "target": "international travel" },
+          { "source": "el metro", "target": "getting around the city fast" },
+          { "source": "el taxi", "target": "door-to-door service" },
+          { "source": "el tren", "target": "between cities" }
+        ]
+      }
+    },
+    {
+      "id": "t1-e7",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "Necesito un billete de tren para Madrid.",
+        "sourceAudio": "es/billete_tren_madrid.mp3",
+        "correctTranslation": "I need a train ticket to Madrid.",
+        "alternativeTranslations": ["I need a ticket for the train to Madrid."],
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "t1-e8",
+      "type": "fill_in_blank",
+      "prompt": "Complete: asking how to get somewhere",
+      "difficulty": 2,
+      "content": {
+        "sentence": "¿Cómo puedo llegar al ___?",
+        "blanks": [
+          {
+            "position": 0,
+            "correctAnswer": "aeropuerto",
+            "alternativeAnswers": ["hotel", "centro"],
+            "hint": "You're asking how to get to the airport"
+          }
+        ]
+      }
+    },
+    {
+      "id": "t1-e9",
+      "type": "multiple_choice",
+      "prompt": "Which is the correct way to say 'by car'?",
+      "difficulty": 2,
+      "content": {
+        "question": "by car",
+        "options": [
+          { "text": "con el coche", "correct": false },
+          { "text": "del coche", "correct": false },
+          { "text": "en coche", "correct": true, "audio": "es/en_coche.mp3" },
+          { "text": "al coche", "correct": false }
+        ]
+      },
+      "hints": ["'En' is used for transportation methods"]
+    },
+    {
+      "id": "t1-e10",
+      "type": "word_bank",
+      "prompt": "Build: 'Two tickets to Barcelona, please'",
+      "difficulty": 3,
+      "content": {
+        "sentence": "Dos {} para {}, por favor.",
+        "wordBank": [
+          { "text": "billetes", "correct": true, "position": 0 },
+          { "text": "Barcelona", "correct": true, "position": 1 },
+          { "text": "billete", "correct": false },
+          { "text": "Madrid", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "t1-e11",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 3,
+      "content": {
+        "sourceText": "I prefer to travel by train. It's faster than the bus.",
+        "correctTranslation": "Prefiero viajar en tren. Es más rápido que el autobús.",
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "t1-e12",
+      "type": "fill_in_blank",
+      "prompt": "At the ticket counter",
+      "difficulty": 3,
+      "content": {
+        "sentence": "— Quisiera un ___ de ida y vuelta a Sevilla. — ¿Para cuándo? — Para el ___ 15.",
+        "blanks": [
+          { "position": 0, "correctAnswer": "billete", "alternativeAnswers": ["boleto"] },
+          { "position": 1, "correctAnswer": "día", "alternativeAnswers": ["lunes", "viernes", "sábado"] }
+        ]
+      }
+    }
+  ]
+}

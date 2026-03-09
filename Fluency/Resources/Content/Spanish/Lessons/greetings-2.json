@@ -1,0 +1,198 @@
+{
+  "id": "greetings-2",
+  "name": "Introductions",
+  "description": "How to introduce yourself — name, nationality, how you are",
+  "unit": "greetings",
+  "order": 2,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "me llamo", "translation": "my name is", "phonetic": "meh YAH-mo", "partOfSpeech": "verb", "difficulty": 1, "audio": "es/me_llamo.mp3" },
+    { "word": "¿cómo te llamas?", "translation": "what is your name?", "phonetic": "KOH-mo teh YAH-mas", "partOfSpeech": "interjection", "difficulty": 2, "audio": "es/como_te_llamas.mp3" },
+    { "word": "¿cómo estás?", "translation": "how are you? (informal)", "phonetic": "KOH-mo es-TAHS", "partOfSpeech": "interjection", "difficulty": 1, "audio": "es/como_estas.mp3" },
+    { "word": "bien", "translation": "well / good", "phonetic": "byehn", "partOfSpeech": "adverb", "difficulty": 1, "audio": "es/bien.mp3" },
+    { "word": "muy bien", "translation": "very well", "phonetic": "mooy byehn", "partOfSpeech": "adverb", "difficulty": 1, "audio": "es/muy_bien.mp3" },
+    { "word": "mal", "translation": "bad / not well", "phonetic": "mahl", "partOfSpeech": "adverb", "difficulty": 1, "audio": "es/mal.mp3" },
+    { "word": "más o menos", "translation": "so-so / more or less", "phonetic": "mahs o MEH-nos", "partOfSpeech": "adverb", "difficulty": 2, "audio": "es/mas_o_menos.mp3" },
+    { "word": "mucho gusto", "translation": "nice to meet you", "phonetic": "MOO-cho GOOS-to", "partOfSpeech": "interjection", "difficulty": 2, "audio": "es/mucho_gusto.mp3" },
+    { "word": "soy de", "translation": "I am from", "phonetic": "soy deh", "partOfSpeech": "verb", "difficulty": 2, "audio": "es/soy_de.mp3" },
+    { "word": "encantado/a", "translation": "delighted / pleased to meet you", "phonetic": "en-kan-TAH-do", "partOfSpeech": "adjective", "difficulty": 2, "audio": "es/encantado.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "g2-e1",
+      "type": "multiple_choice",
+      "prompt": "How do you say 'my name is' in Spanish?",
+      "difficulty": 1,
+      "content": {
+        "question": "my name is",
+        "options": [
+          { "text": "me gusta", "correct": false },
+          { "text": "me llamo", "correct": true, "audio": "es/me_llamo.mp3" },
+          { "text": "soy de", "correct": false },
+          { "text": "mucho gusto", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "g2-e2",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "how are you?",
+        "correctTranslation": "¿cómo estás?",
+        "alternativeTranslations": ["como estas", "¿como estas?"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "g2-e3",
+      "type": "matching",
+      "prompt": "Match each phrase to its meaning",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "muy bien", "target": "very well" },
+          { "source": "mal", "target": "not well / bad" },
+          { "source": "más o menos", "target": "so-so" },
+          { "source": "bien", "target": "good / well" }
+        ]
+      }
+    },
+    {
+      "id": "g2-e4",
+      "type": "word_bank",
+      "prompt": "Complete the introduction",
+      "difficulty": 1,
+      "content": {
+        "sentence": "{} llamo Ana.",
+        "sentenceAudio": "es/me_llamo_ana.mp3",
+        "wordBank": [
+          { "text": "Me", "correct": true, "position": 0 },
+          { "text": "Mi", "correct": false },
+          { "text": "Yo", "correct": false },
+          { "text": "Tu", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "g2-e5",
+      "type": "multiple_choice",
+      "prompt": "What does 'mucho gusto' mean?",
+      "difficulty": 2,
+      "content": {
+        "question": "mucho gusto",
+        "questionAudio": "es/mucho_gusto.mp3",
+        "options": [
+          { "text": "thank you very much", "correct": false },
+          { "text": "nice to meet you", "correct": true },
+          { "text": "I like it a lot", "correct": false },
+          { "text": "very good", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "g2-e6",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Hola, ___ llamo Carlos. ¿___ te llamas?",
+        "blanks": [
+          { "position": 0, "correctAnswer": "me", "alternativeAnswers": ["Me"] },
+          { "position": 1, "correctAnswer": "cómo", "alternativeAnswers": ["como", "Cómo", "Como"] }
+        ]
+      }
+    },
+    {
+      "id": "g2-e7",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "Soy de México.",
+        "sourceAudio": "es/soy_de_mexico.mp3",
+        "correctTranslation": "I am from Mexico.",
+        "alternativeTranslations": ["I'm from Mexico."],
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "g2-e8",
+      "type": "word_bank",
+      "prompt": "Build the greeting exchange",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Hola! {} {} Juan.",
+        "sentenceAudio": "es/hola_me_llamo_juan.mp3",
+        "wordBank": [
+          { "text": "Me", "correct": true, "position": 0 },
+          { "text": "llamo", "correct": true, "position": 1 },
+          { "text": "soy", "correct": false },
+          { "text": "eres", "correct": false },
+          { "text": "llamas", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "g2-e9",
+      "type": "multiple_choice",
+      "prompt": "Someone says '¿cómo estás?' — which is NOT a valid response?",
+      "difficulty": 2,
+      "content": {
+        "question": "¿cómo estás?",
+        "options": [
+          { "text": "Muy bien, gracias", "correct": false },
+          { "text": "Más o menos", "correct": false },
+          { "text": "Buenos días", "correct": true },
+          { "text": "Mal, gracias", "correct": false }
+        ]
+      },
+      "hints": ["Think about what is being asked"]
+    },
+    {
+      "id": "g2-e10",
+      "type": "translation",
+      "prompt": "Translate the full exchange",
+      "difficulty": 3,
+      "content": {
+        "sourceText": "Nice to meet you.",
+        "correctTranslation": "Mucho gusto.",
+        "alternativeTranslations": ["Encantado.", "Encantada.", "mucho gusto"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "g2-e11",
+      "type": "fill_in_blank",
+      "prompt": "Complete the response",
+      "difficulty": 2,
+      "content": {
+        "sentence": "— ¿Cómo estás? — ___, gracias. ¿Y tú?",
+        "blanks": [
+          {
+            "position": 0,
+            "correctAnswer": "Bien",
+            "alternativeAnswers": ["Muy bien", "bien", "muy bien"],
+            "hint": "A positive response"
+          }
+        ]
+      }
+    },
+    {
+      "id": "g2-e12",
+      "type": "matching",
+      "prompt": "Match the question to the correct answer",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "¿Cómo te llamas?", "target": "Me llamo Ana." },
+          { "source": "¿Cómo estás?", "target": "Muy bien, gracias." },
+          { "source": "¿De dónde eres?", "target": "Soy de España." },
+          { "source": "Mucho gusto.", "target": "Encantada." }
+        ]
+      }
+    }
+  ]
+}

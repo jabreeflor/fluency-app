@@ -1,0 +1,196 @@
+{
+  "id": "animals-1",
+  "name": "Common Animals",
+  "description": "Pets and farm animals in Spanish",
+  "unit": "animals",
+  "order": 1,
+  "type": "lesson",
+  "xpReward": 15,
+  "newWords": [
+    { "word": "el perro", "translation": "dog", "phonetic": "el PEH-rro", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/perro.mp3" },
+    { "word": "el gato", "translation": "cat", "phonetic": "el GAH-to", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/gato.mp3" },
+    { "word": "el pájaro", "translation": "bird", "phonetic": "el PAH-ha-ro", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/pajaro.mp3" },
+    { "word": "el pez", "translation": "fish", "phonetic": "el pehs", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 1, "audio": "es/pez.mp3" },
+    { "word": "el caballo", "translation": "horse", "phonetic": "el ka-BAH-yo", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/caballo.mp3" },
+    { "word": "la vaca", "translation": "cow", "phonetic": "la BAH-ka", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 1, "audio": "es/vaca.mp3" },
+    { "word": "el cerdo", "translation": "pig", "phonetic": "el SER-do", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/cerdo.mp3" },
+    { "word": "la oveja", "translation": "sheep", "phonetic": "la o-BEH-ha", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 2, "audio": "es/oveja.mp3" },
+    { "word": "el conejo", "translation": "rabbit", "phonetic": "el ko-NEH-ho", "partOfSpeech": "noun", "gender": "masculine", "difficulty": 2, "audio": "es/conejo.mp3" },
+    { "word": "la gallina", "translation": "hen / chicken", "phonetic": "la gah-YEE-na", "partOfSpeech": "noun", "gender": "feminine", "difficulty": 2, "audio": "es/gallina.mp3" }
+  ],
+  "exercises": [
+    {
+      "id": "a1-e1",
+      "type": "multiple_choice",
+      "prompt": "What does 'el perro' mean?",
+      "difficulty": 1,
+      "content": {
+        "question": "el perro",
+        "questionAudio": "es/perro.mp3",
+        "options": [
+          { "text": "cat", "correct": false },
+          { "text": "dog", "correct": true },
+          { "text": "bird", "correct": false },
+          { "text": "fish", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "a1-e2",
+      "type": "matching",
+      "prompt": "Match the animal to its Spanish name",
+      "difficulty": 1,
+      "content": {
+        "pairs": [
+          { "source": "el gato", "sourceAudio": "es/gato.mp3", "target": "cat" },
+          { "source": "el pájaro", "sourceAudio": "es/pajaro.mp3", "target": "bird" },
+          { "source": "la vaca", "sourceAudio": "es/vaca.mp3", "target": "cow" },
+          { "source": "el pez", "sourceAudio": "es/pez.mp3", "target": "fish" }
+        ]
+      }
+    },
+    {
+      "id": "a1-e3",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 1,
+      "content": {
+        "sourceText": "horse",
+        "correctTranslation": "el caballo",
+        "alternativeTranslations": ["caballo"],
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "a1-e4",
+      "type": "multiple_choice",
+      "prompt": "Which is a farm animal?",
+      "difficulty": 2,
+      "content": {
+        "question": "Which is 'la oveja'?",
+        "options": [
+          { "text": "fish", "correct": false },
+          { "text": "rabbit", "correct": false },
+          { "text": "sheep", "correct": true, "audio": "es/oveja.mp3" },
+          { "text": "cat", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "a1-e5",
+      "type": "word_bank",
+      "prompt": "Build: 'I have a dog and a cat'",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Tengo un {} y un {}.",
+        "sentenceAudio": "es/tengo_perro_gato.mp3",
+        "wordBank": [
+          { "text": "perro", "correct": true, "position": 0 },
+          { "text": "gato", "correct": true, "position": 1 },
+          { "text": "pájaro", "correct": false },
+          { "text": "pez", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "a1-e6",
+      "type": "matching",
+      "prompt": "Match: pet or farm animal?",
+      "difficulty": 2,
+      "content": {
+        "pairs": [
+          { "source": "el perro", "target": "pet" },
+          { "source": "la vaca", "target": "farm animal" },
+          { "source": "el cerdo", "target": "farm animal" },
+          { "source": "el conejo", "target": "pet" }
+        ]
+      }
+    },
+    {
+      "id": "a1-e7",
+      "type": "translation",
+      "prompt": "Translate to English",
+      "difficulty": 2,
+      "content": {
+        "sourceText": "La gallina pone huevos.",
+        "sourceAudio": "es/gallina_huevos.mp3",
+        "correctTranslation": "The hen lays eggs.",
+        "alternativeTranslations": ["The chicken lays eggs."],
+        "direction": "source_to_target"
+      }
+    },
+    {
+      "id": "a1-e8",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the animal",
+      "difficulty": 2,
+      "content": {
+        "sentence": "Mi mascota favorita es el ___.",
+        "blanks": [
+          {
+            "position": 0,
+            "correctAnswer": "perro",
+            "alternativeAnswers": ["gato", "conejo", "pájaro", "pez"],
+            "hint": "Any pet works!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "a1-e9",
+      "type": "multiple_choice",
+      "prompt": "What does 'el cerdo' mean?",
+      "difficulty": 2,
+      "content": {
+        "question": "el cerdo",
+        "questionAudio": "es/cerdo.mp3",
+        "options": [
+          { "text": "sheep", "correct": false },
+          { "text": "horse", "correct": false },
+          { "text": "pig", "correct": true },
+          { "text": "rabbit", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "a1-e10",
+      "type": "word_bank",
+      "prompt": "Describe: 'The rabbit is white'",
+      "difficulty": 3,
+      "content": {
+        "sentence": "El {} es {}.",
+        "wordBank": [
+          { "text": "conejo", "correct": true, "position": 0 },
+          { "text": "blanco", "correct": true, "position": 1 },
+          { "text": "gato", "correct": false },
+          { "text": "blanca", "correct": false }
+        ]
+      }
+    },
+    {
+      "id": "a1-e11",
+      "type": "translation",
+      "prompt": "Translate to Spanish",
+      "difficulty": 3,
+      "content": {
+        "sourceText": "We have three cows and two horses on the farm.",
+        "correctTranslation": "Tenemos tres vacas y dos caballos en la granja.",
+        "direction": "target_to_source"
+      }
+    },
+    {
+      "id": "a1-e12",
+      "type": "matching",
+      "prompt": "Match the animal to what it does",
+      "difficulty": 3,
+      "content": {
+        "pairs": [
+          { "source": "el pájaro", "target": "flies (vuela)" },
+          { "source": "el pez", "target": "swims (nada)" },
+          { "source": "el perro", "target": "barks (ladra)" },
+          { "source": "el gato", "target": "meows (maúlla)" }
+        ]
+      }
+    }
+  ]
+}
