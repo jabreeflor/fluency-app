@@ -9,13 +9,12 @@ struct MultipleChoiceView: View {
 
     var body: some View {
         VStack(spacing: 16) {
-            // Question
             Text(exercise.question)
-                .font(.title2.weight(.semibold))
+                .font(.system(.title3, design: .default, weight: .semibold))
                 .multilineTextAlignment(.center)
+                .foregroundStyle(FluencyTheme.textPrimary)
                 .padding(.bottom, 8)
 
-            // Audio button (if available)
             if exercise.audioFile != nil {
                 Button {
                     session.playAudio(file: exercise.audioFile ?? "")
@@ -29,49 +28,53 @@ struct MultipleChoiceView: View {
                 }
             }
 
-            // Options
             ForEach(exercise.options ?? [], id: \.self) { option in
-                OptionButton(
+                OptionCard(
                     text: option,
                     state: optionState(for: option),
                     action: {
                         guard case .active = session.sessionState else { return }
                         selectedOption = option
-                        session.submitAnswer(option)
+                        session.userAnswer = option
                     }
                 )
             }
         }
     }
 
-    private func optionState(for option: String) -> OptionButtonState {
-        guard let selected = selectedOption else { return .normal }
+    private func optionState(for option: String) -> OptionCardState {
+        guard let selected = selectedOption,
+              case .showingFeedback = session.sessionState else {
+            return selectedOption == option ? .selected : .normal
+        }
         if option == exercise.correctAnswer { return .correct }
         if option == selected { return .incorrect }
         return .normal
     }
 }
 
-enum OptionButtonState { case normal, correct, incorrect }
+enum OptionCardState { case normal, selected, correct, incorrect }
 
-struct OptionButton: View {
+struct OptionCard: View {
     let text: String
-    let state: OptionButtonState
+    let state: OptionCardState
     let action: () -> Void
 
-    var bgColor: Color {
+    private var bgColor: Color {
         switch state {
         case .normal: return FluencyTheme.cardBg
-        case .correct: return FluencyTheme.correctGreen
-        case .incorrect: return FluencyTheme.wrongRed
+        case .selected: return FluencyTheme.primary.opacity(0.08)
+        case .correct: return FluencyTheme.success.opacity(0.15)
+        case .incorrect: return FluencyTheme.error.opacity(0.15)
         }
     }
 
-    var borderColor: Color {
+    private var borderColor: Color {
         switch state {
         case .normal: return FluencyTheme.border
-        case .correct: return FluencyTheme.correctBorder
-        case .incorrect: return FluencyTheme.wrongBorder
+        case .selected: return FluencyTheme.primary
+        case .correct: return FluencyTheme.success
+        case .incorrect: return FluencyTheme.error
         }
     }
 
@@ -83,21 +86,24 @@ struct OptionButton: View {
                     .foregroundStyle(FluencyTheme.textPrimary)
                     .multilineTextAlignment(.leading)
                 Spacer()
-                if state == .correct {
-                    Image(systemName: "checkmark.circle.fill").foregroundStyle(FluencyTheme.correctBorder)
-                } else if state == .incorrect {
-                    Image(systemName: "xmark.circle.fill").foregroundStyle(FluencyTheme.wrongBorder)
+                switch state {
+                case .correct:
+                    Image(systemName: "checkmark.circle.fill").foregroundStyle(FluencyTheme.success)
+                case .incorrect:
+                    Image(systemName: "xmark.circle.fill").foregroundStyle(FluencyTheme.error)
+                case .selected:
+                    Image(systemName: "circle.inset.filled").foregroundStyle(FluencyTheme.primary)
+                case .normal:
+                    EmptyView()
                 }
             }
             .padding(FluencyTheme.cardPadding)
             .background(bgColor)
             .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
-            .overlay(
-                RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius)
-                    .stroke(borderColor, lineWidth: 2)
-            )
+            .overlay(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius).stroke(borderColor, lineWidth: 2))
         }
-        .animation(.easeOut(duration: 0.15), value: state)
+        .buttonStyle(.plain)
+        .animation(FluencyTheme.springSnappy, value: state)
     }
 }
 
@@ -106,17 +112,17 @@ struct OptionButton: View {
 struct FillBlankView: View {
     let exercise: ExerciseContent
     @ObservedObject var session: LessonSession
-    @State private var textInput: String = ""
     @FocusState private var isFocused: Bool
 
     var body: some View {
         VStack(spacing: 24) {
             Text(exercise.question)
-                .font(.title2.weight(.semibold))
+                .font(.system(.title3, design: .default, weight: .semibold))
                 .multilineTextAlignment(.center)
+                // Highlight Spanish parts in primary blue
+                .foregroundStyle(FluencyTheme.textPrimary)
 
-            // Text input
-            TextField("Type your answer...", text: $textInput)
+            TextField("Type your answer...", text: $session.userAnswer)
                 .font(.title3)
                 .padding(FluencyTheme.cardPadding)
                 .background(FluencyTheme.cardBg)
@@ -127,18 +133,7 @@ struct FillBlankView: View {
                 )
                 .focused($isFocused)
                 .autocorrectionDisabled()
-                .onSubmit {
-                    guard !textInput.isEmpty else { return }
-                    session.submitAnswer(textInput)
-                }
-
-            // Submit button
-            Button("Check Answer") {
-                guard !textInput.isEmpty else { return }
-                session.submitAnswer(textInput)
-            }
-            .buttonStyle(FluencyButtonStyle(isDisabled: textInput.isEmpty))
-            .disabled(textInput.isEmpty)
+                .textInputAutocapitalization(.never)
         }
         .onAppear { isFocused = true }
     }
@@ -155,13 +150,13 @@ struct WordBankView: View {
     var body: some View {
         VStack(spacing: 24) {
             Text(exercise.question)
-                .font(.title2.weight(.semibold))
+                .font(.system(.title3, design: .default, weight: .semibold))
                 .multilineTextAlignment(.center)
 
             // Answer area
             ZStack {
                 RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius)
-                    .stroke(FluencyTheme.border, lineWidth: 2)
+                    .stroke(selectedWords.isEmpty ? FluencyTheme.border : FluencyTheme.primary, lineWidth: 2)
                     .frame(minHeight: 60)
 
                 if selectedWords.isEmpty {
@@ -171,9 +166,10 @@ struct WordBankView: View {
                 } else {
                     FlowLayout(spacing: 8) {
                         ForEach(selectedWords, id: \.self) { word in
-                            WordChip(word: word, isSelected: true) {
+                            WordBubble(word: word, isSelected: true) {
                                 selectedWords.removeAll { $0 == word }
                                 availableWords.append(word)
+                                syncAnswer()
                             }
                         }
                     }
@@ -185,47 +181,22 @@ struct WordBankView: View {
             // Word bank
             FlowLayout(spacing: 8) {
                 ForEach(availableWords, id: \.self) { word in
-                    WordChip(word: word, isSelected: false) {
+                    WordBubble(word: word, isSelected: false) {
                         availableWords.removeAll { $0 == word }
                         selectedWords.append(word)
+                        syncAnswer()
                     }
                 }
             }
             .padding(.horizontal)
-
-            // Submit
-            Button("Check Answer") {
-                let answer = selectedWords.joined(separator: ",")
-                session.submitAnswer(answer)
-            }
-            .buttonStyle(FluencyButtonStyle(isDisabled: selectedWords.isEmpty))
-            .disabled(selectedWords.isEmpty)
         }
         .onAppear {
             availableWords = (exercise.options ?? []).shuffled()
         }
     }
-}
 
-struct WordChip: View {
-    let word: String
-    let isSelected: Bool
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Text(word)
-                .font(FluencyTheme.bodyFont)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 8)
-                .background(isSelected ? FluencyTheme.primary.opacity(0.15) : FluencyTheme.cardBg)
-                .foregroundStyle(isSelected ? FluencyTheme.primary : FluencyTheme.textPrimary)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(isSelected ? FluencyTheme.primary : FluencyTheme.border, lineWidth: 2)
-                )
-        }
+    private func syncAnswer() {
+        session.userAnswer = selectedWords.joined(separator: " ")
     }
 }
 
@@ -234,22 +205,22 @@ struct WordChip: View {
 struct ListeningView: View {
     let exercise: ExerciseContent
     @ObservedObject var session: LessonSession
-    @State private var textInput: String = ""
+    @State private var hasPlayed = false
 
     var body: some View {
         VStack(spacing: 24) {
             Text("What do you hear?")
-                .font(.title2.weight(.semibold))
+                .font(.system(.title3, design: .default, weight: .semibold))
 
-            // Play button
             Button {
+                hasPlayed = true
                 session.playAudio(file: exercise.audioFile ?? "")
             } label: {
                 VStack(spacing: 8) {
-                    Image(systemName: "speaker.wave.3.fill")
+                    Image(systemName: hasPlayed ? "speaker.wave.3.fill" : "speaker.wave.2.fill")
                         .font(.system(size: 48))
                         .foregroundStyle(FluencyTheme.primary)
-                    Text("Tap to listen")
+                    Text(hasPlayed ? "Tap to replay" : "Tap to listen")
                         .font(FluencyTheme.captionFont)
                         .foregroundStyle(FluencyTheme.textSecondary)
                 }
@@ -258,19 +229,14 @@ struct ListeningView: View {
                 .clipShape(Circle())
             }
 
-            TextField("Type what you heard...", text: $textInput)
+            TextField("Type what you heard...", text: $session.userAnswer)
                 .font(.title3)
                 .padding(FluencyTheme.cardPadding)
                 .background(FluencyTheme.cardBg)
                 .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
                 .overlay(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius).stroke(FluencyTheme.border, lineWidth: 2))
                 .autocorrectionDisabled()
-
-            Button("Check Answer") {
-                session.submitAnswer(textInput)
-            }
-            .buttonStyle(FluencyButtonStyle(isDisabled: textInput.isEmpty))
-            .disabled(textInput.isEmpty)
+                .textInputAutocapitalization(.never)
         }
     }
 }
@@ -282,12 +248,11 @@ struct SpeakingView: View {
     @ObservedObject var session: LessonSession
     @ObservedObject private var speechService = SpeechService.shared
     @State private var showTypeInstead = false
-    @State private var typedAnswer = ""
 
     var body: some View {
         VStack(spacing: 24) {
             Text("Say this in Spanish:")
-                .font(.title2.weight(.semibold))
+                .font(.system(.title3, design: .default, weight: .semibold))
 
             Text("\"\(exercise.question)\"")
                 .font(.title.italic())
@@ -296,43 +261,32 @@ struct SpeakingView: View {
                 .padding(.horizontal)
 
             if showTypeInstead {
-                // Fallback: type the answer
-                VStack(spacing: 12) {
-                    TextField("Type the Spanish phrase...", text: $typedAnswer)
-                        .font(.title3)
-                        .padding(FluencyTheme.cardPadding)
-                        .background(FluencyTheme.cardBg)
-                        .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
-                        .overlay(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius).stroke(FluencyTheme.border, lineWidth: 2))
-                        .autocorrectionDisabled()
-
-                    Button("Check Answer") {
-                        session.submitAnswer(typedAnswer)
-                    }
-                    .buttonStyle(FluencyButtonStyle(isDisabled: typedAnswer.isEmpty))
-                    .disabled(typedAnswer.isEmpty)
-                }
+                TextField("Type the Spanish phrase...", text: $session.userAnswer)
+                    .font(.title3)
+                    .padding(FluencyTheme.cardPadding)
+                    .background(FluencyTheme.cardBg)
+                    .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
+                    .overlay(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius).stroke(FluencyTheme.border, lineWidth: 2))
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
             } else {
                 // Mic button
                 Button {
                     if speechService.isListening {
-                        let result = session.stopSpeaking()
-                        if !result.isEmpty {
-                            session.submitAnswer(result)
-                        }
+                        session.userAnswer = session.stopSpeaking()
                     } else {
                         session.startSpeaking()
                     }
                 } label: {
                     ZStack {
                         Circle()
-                            .fill(speechService.isListening ? FluencyTheme.accent : FluencyTheme.primary)
+                            .fill(speechService.isListening ? FluencyTheme.error : FluencyTheme.primary)
                             .frame(width: 88, height: 88)
-                            .shadow(color: (speechService.isListening ? FluencyTheme.accent : FluencyTheme.primary).opacity(0.4),
+                            .shadow(color: (speechService.isListening ? FluencyTheme.error : FluencyTheme.primary).opacity(0.35),
                                     radius: speechService.isListening ? 20 : 8)
                             .scaleEffect(speechService.isListening ? 1.12 : 1.0)
                             .animation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true)
-                                .delay(speechService.isListening ? 0 : .infinity), value: speechService.isListening)
+                                .delay(speechService.isListening ? 0 : 100), value: speechService.isListening)
 
                         Image(systemName: speechService.isListening ? "mic.fill" : "mic")
                             .font(.system(size: 32))
@@ -340,31 +294,23 @@ struct SpeakingView: View {
                     }
                 }
 
-                Text(speechService.isListening ? "Listening... tap to stop" : "Tap the mic to speak")
+                Text(speechService.isListening ? "Listening… tap to stop" : "Tap the mic to speak")
                     .font(FluencyTheme.captionFont)
                     .foregroundStyle(FluencyTheme.textSecondary)
 
                 if !speechService.transcription.isEmpty {
-                    VStack(spacing: 8) {
-                        Text("Heard: \"\(speechService.transcription)\"")
-                            .font(FluencyTheme.bodyFont)
-                            .foregroundStyle(FluencyTheme.textSecondary)
-                            .multilineTextAlignment(.center)
-
-                        Button("Submit Answer") {
-                            session.submitAnswer(speechService.transcription)
-                        }
-                        .buttonStyle(FluencyButtonStyle())
-                    }
+                    Text("Heard: \"\(speechService.transcription)\"")
+                        .font(FluencyTheme.bodyFont)
+                        .foregroundStyle(FluencyTheme.textSecondary)
+                        .multilineTextAlignment(.center)
                 }
 
                 if let error = speechService.errorMessage {
                     Text(error)
                         .font(FluencyTheme.captionFont)
-                        .foregroundStyle(FluencyTheme.accent)
+                        .foregroundStyle(FluencyTheme.error)
                 }
 
-                // Type instead option
                 Button("Type instead") {
                     speechService.stopListening()
                     showTypeInstead = true
@@ -384,7 +330,8 @@ struct FlowLayout: Layout {
 
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         let rows = computeRows(proposal: proposal, subviews: subviews)
-        let height = rows.map { $0.map { $0.size.height }.max() ?? 0 }.reduce(0, +) + spacing * CGFloat(max(rows.count - 1, 0))
+        let height = rows.map { $0.map { $0.size.height }.max() ?? 0 }.reduce(0, +)
+            + spacing * CGFloat(max(rows.count - 1, 0))
         return CGSize(width: proposal.width ?? 0, height: height)
     }
 

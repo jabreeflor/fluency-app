@@ -90,6 +90,26 @@ final class LessonSession: ObservableObject {
         return exercises[currentExerciseIndex]
     }
 
+    /// True when the user has selected/typed an answer (enables Check button)
+    var hasAnswer: Bool {
+        !userAnswer.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    // MARK: - Check button (manual submission via UI)
+
+    func checkCurrentAnswer() {
+        submitAnswer(userAnswer)
+    }
+
+    /// Advance to next exercise after user taps Continue in FeedbackBar
+    func advanceExercise() {
+        if hearts <= 0 {
+            Task { await finishSession(failed: true) }
+        } else {
+            Task { await advance() }
+        }
+    }
+
     // MARK: - Answer Submission
 
     func submitAnswer(_ answer: String) {
@@ -113,19 +133,7 @@ final class LessonSession: ObservableObject {
         }
 
         progressFraction = Double(currentExerciseIndex + 1) / Double(exercises.count)
-
-        // Auto-advance after feedback
-        if hearts <= 0 {
-            Task {
-                try? await Task.sleep(nanoseconds: 1_500_000_000)
-                await finishSession(failed: true)
-            }
-        } else {
-            Task {
-                try? await Task.sleep(nanoseconds: 1_500_000_000)
-                await advance()
-            }
-        }
+        // User now manually taps Continue via FeedbackBar to advance
     }
 
     @MainActor

@@ -1,155 +1,425 @@
 import SwiftUI
 import SwiftData
 
+// MARK: - Onboarding Flow (6 screens per Ellis spec)
+
 struct OnboardingView: View {
     @Environment(\.modelContext) private var modelContext
-    @State private var step: Int = 0
-    @State private var username: String = ""
-    @State private var selectedGoal: Int = 20
-
-    private let goals = [10, 20, 30, 50]
+    @State private var step = 0
+    @State private var selectedGoal: String?
+    @State private var selectedLevel: String?
+    @State private var selectedMinutes: Int = 10
+    @State private var showPaywall = false
+    @State private var showAccount = false
 
     var body: some View {
-        VStack(spacing: 0) {
-            // Progress dots
-            HStack(spacing: 8) {
-                ForEach(0..<3, id: \.self) { i in
-                    Capsule()
-                        .fill(i <= step ? FluencyTheme.primary : FluencyTheme.border)
-                        .frame(width: i == step ? 24 : 8, height: 8)
-                        .animation(.spring(response: 0.3), value: step)
-                }
-            }
-            .padding(.top, 24)
-
-            Spacer()
-
-            // Step content
+        ZStack {
+            // Slide transition between steps
             switch step {
-            case 0: welcomeStep
-            case 1: nameStep
-            case 2: goalStep
-            default: welcomeStep
+            case 0: SplashScreen(onStart: { withAnimation { step = 1 } },
+                                  onLogin: { createUserAndFinish() })
+            case 1: GoalSelectionScreen(selected: $selectedGoal,
+                                         onNext: { withAnimation { step = 2 } })
+            case 2: LevelScreen(selected: $selectedLevel,
+                                onNext: { withAnimation { step = 3 } })
+            case 3: CommitmentScreen(selectedMinutes: $selectedMinutes,
+                                     onNext: { withAnimation { step = 4 } })
+            case 4: OnboardingPaywall(onTrial: { withAnimation { step = 5 } },
+                                      onFree: { withAnimation { step = 5 } })
+            case 5: AccountCreationScreen(onCreate: { createUserAndFinish() })
+            default: EmptyView()
             }
+        }
+        .animation(FluencyTheme.springSnappy, value: step)
+    }
 
-            Spacer()
+    private func createUserAndFinish() {
+        let user = User()
+        user.dailyXPGoal = selectedMinutes * 2 // ~2 XP/min
+        modelContext.insert(user)
+        try? modelContext.save()
+    }
+}
 
-            // CTA
-            Button(step < 2 ? "Continue" : "Start Learning 🚀") {
-                if step < 2 {
-                    withAnimation { step += 1 }
-                } else {
-                    createUser()
+// MARK: - Screen 1.1 — Splash / Hero
+
+private struct SplashScreen: View {
+    let onStart: () -> Void
+    let onLogin: () -> Void
+
+    var body: some View {
+        ZStack {
+            FluencyTheme.heroGradientVertical.ignoresSafeArea()
+            VStack(spacing: 0) {
+                Spacer()
+                VStack(spacing: 16) {
+                    Text("Fluency")
+                        .font(.system(size: 48, weight: .bold))
+                        .foregroundStyle(.white)
+                    Text("Spanish that sticks.")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundStyle(.white.opacity(0.9))
                 }
+                Spacer()
+                VStack(spacing: 14) {
+                    Button("Get Started", action: onStart)
+                        .font(.system(.body, design: .default, weight: .semibold))
+                        .foregroundStyle(FluencyTheme.primary)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: FluencyTheme.buttonHeight)
+                        .background(Color.white)
+                        .clipShape(Capsule())
+                        .padding(.horizontal, 24)
+
+                    Button("I already have an account", action: onLogin)
+                        .font(.system(.subheadline, design: .default, weight: .medium))
+                        .foregroundStyle(.white.opacity(0.85))
+                }
+                .padding(.bottom, 48)
             }
-            .buttonStyle(FluencyButtonStyle(isDisabled: step == 1 && username.isEmpty))
-            .disabled(step == 1 && username.isEmpty)
-            .padding(.horizontal, 24)
-            .padding(.bottom, 40)
-        }
-        .background(FluencyTheme.surface.ignoresSafeArea())
-    }
-
-    // MARK: - Steps
-
-    private var welcomeStep: some View {
-        VStack(spacing: 24) {
-            Text("🇪🇸")
-                .font(.system(size: 80))
-            Text("Learn Spanish\nfor free")
-                .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                .multilineTextAlignment(.center)
-            Text("Bite-sized lessons. Daily streaks.\nActually fun.")
-                .font(FluencyTheme.bodyFont)
-                .foregroundStyle(FluencyTheme.textSecondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-    }
-
-    private var nameStep: some View {
-        VStack(spacing: 24) {
-            Text("What's your name?")
-                .font(FluencyTheme.titleFont)
-            TextField("Your name", text: $username)
-                .font(.title3)
-                .padding(FluencyTheme.cardPadding)
-                .background(FluencyTheme.cardBg)
-                .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
-                .overlay(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius).stroke(FluencyTheme.border, lineWidth: 2))
-                .padding(.horizontal, 24)
-                .autocorrectionDisabled()
         }
     }
+}
 
-    private var goalStep: some View {
-        VStack(spacing: 24) {
-            Text("Set your daily goal")
-                .font(FluencyTheme.titleFont)
-            Text("How much time do you want to spend learning each day?")
-                .font(FluencyTheme.bodyFont)
-                .foregroundStyle(FluencyTheme.textSecondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
+// MARK: - Screen 1.2 — Goal Selection
 
+private struct GoalSelectionScreen: View {
+    @Binding var selected: String?
+    let onNext: () -> Void
+
+    private let goals: [(icon: String, label: String)] = [
+        ("✈️", "Travel"),
+        ("💼", "Work"),
+        ("❤️", "Family / Friends"),
+        ("🧠", "Personal Growth")
+    ]
+
+    var body: some View {
+        OnboardingShell(title: "Why are you learning Spanish?", step: 1, total: 4) {
             VStack(spacing: 12) {
-                ForEach(goals, id: \.self) { goal in
-                    Button {
-                        withAnimation { selectedGoal = goal }
-                    } label: {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("\(goal) XP per day")
-                                    .font(FluencyTheme.headlineFont)
-                                Text(goalDescription(goal))
-                                    .font(FluencyTheme.captionFont)
-                                    .foregroundStyle(FluencyTheme.textSecondary)
-                            }
-                            Spacer()
-                            if selectedGoal == goal {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .foregroundStyle(FluencyTheme.primary)
-                                    .font(.title2)
-                            }
-                        }
-                        .padding(FluencyTheme.cardPadding)
-                        .background(selectedGoal == goal ? FluencyTheme.primary.opacity(0.08) : FluencyTheme.cardBg)
-                        .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius)
-                                .stroke(selectedGoal == goal ? FluencyTheme.primary : FluencyTheme.border, lineWidth: 2)
-                        )
+                ForEach(goals, id: \.label) { goal in
+                    ChoiceCard(icon: goal.icon, label: goal.label, isSelected: selected == goal.label) {
+                        selected = goal.label
                     }
                 }
             }
-            .padding(.horizontal, 24)
+        } footer: {
+            FluencyPrimaryButton("Next", isDisabled: selected == nil, action: onNext)
+                .padding(.horizontal)
         }
     }
+}
 
-    private func goalDescription(_ xp: Int) -> String {
-        switch xp {
-        case 10: return "Casual · ~5 min/day"
-        case 20: return "Regular · ~10 min/day"
-        case 30: return "Serious · ~15 min/day"
-        case 50: return "Intense · ~25 min/day"
-        default: return ""
+// MARK: - Screen 1.3 — Level Assessment
+
+private struct LevelScreen: View {
+    @Binding var selected: String?
+    let onNext: () -> Void
+
+    private let levels: [(icon: String, label: String)] = [
+        ("🌱", "Complete beginner"),
+        ("📖", "Know some basics"),
+        ("💬", "Intermediate — can have simple conversations"),
+        ("🎯", "Advanced — want to polish")
+    ]
+
+    var body: some View {
+        OnboardingShell(title: "How much Spanish do you know?", step: 2, total: 4) {
+            VStack(spacing: 12) {
+                ForEach(levels, id: \.label) { level in
+                    ChoiceCard(icon: level.icon, label: level.label, isSelected: selected == level.label) {
+                        selected = level.label
+                    }
+                }
+            }
+        } footer: {
+            FluencyPrimaryButton("Next", isDisabled: selected == nil, action: onNext)
+                .padding(.horizontal)
         }
     }
+}
 
-    // MARK: - Create User
+// MARK: - Screen 1.4 — Commitment
 
-    private func createUser() {
-        let user = User(username: username.isEmpty ? "Learner" : username)
-        user.dailyXPGoal = selectedGoal
-        modelContext.insert(user)
+private struct CommitmentScreen: View {
+    @Binding var selectedMinutes: Int
+    let onNext: () -> Void
 
-        // Seed achievements
-        for type in AchievementType.allCases {
-            let achievement = UserAchievement(userId: user.id, type: type)
-            modelContext.insert(achievement)
-            achievement.user = user
+    private let options = [5, 10, 15]
+
+    var body: some View {
+        OnboardingShell(title: "How much time per day?", step: 3, total: 4) {
+            HStack(spacing: 14) {
+                ForEach(options, id: \.self) { mins in
+                    CommitmentCard(
+                        minutes: mins,
+                        isSelected: selectedMinutes == mins,
+                        action: { selectedMinutes = mins }
+                    )
+                }
+            }
+        } footer: {
+            FluencyPrimaryButton("Next", action: onNext)
+                .padding(.horizontal)
         }
+    }
+}
 
-        try? modelContext.save()
+private struct CommitmentCard: View {
+    let minutes: Int
+    let isSelected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 8) {
+                Text(minutes == 15 ? "15+" : "\(minutes)")
+                    .font(.system(size: 28, weight: .bold))
+                    .foregroundStyle(isSelected ? .white : FluencyTheme.primary)
+                Text("min / day")
+                    .font(FluencyTheme.captionFont)
+                    .foregroundStyle(isSelected ? .white.opacity(0.9) : FluencyTheme.textSecondary)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 20)
+            .background(isSelected ? FluencyTheme.primary : Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
+            .overlay(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius)
+                .stroke(isSelected ? FluencyTheme.primary : FluencyTheme.border, lineWidth: isSelected ? 0 : 1))
+            .shadow(color: .black.opacity(0.04), radius: 4, y: 2)
+        }
+        .buttonStyle(.plain)
+        .animation(FluencyTheme.springSnappy, value: isSelected)
+    }
+}
+
+// MARK: - Screen 1.5 — Paywall
+
+private struct OnboardingPaywall: View {
+    let onTrial: () -> Void
+    let onFree: () -> Void
+    @State private var isAnnual = true
+
+    private let features = [
+        "Unlimited lessons and practice",
+        "Pronunciation coaching",
+        "No streak pressure — your schedule"
+    ]
+
+    var body: some View {
+        ZStack {
+            FluencyTheme.surface.ignoresSafeArea()
+            VStack(spacing: 0) {
+                Spacer()
+
+                // Hero
+                VStack(spacing: 10) {
+                    Text("Start your 7-day\nfree trial")
+                        .font(.system(size: 32, weight: .bold))
+                        .multilineTextAlignment(.center)
+                    Text("No credit card required")
+                        .font(FluencyTheme.bodyFont)
+                        .foregroundStyle(FluencyTheme.textSecondary)
+                }
+
+                Spacer().frame(height: 32)
+
+                // Features
+                VStack(alignment: .leading, spacing: 14) {
+                    ForEach(features, id: \.self) { feature in
+                        HStack(spacing: 12) {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundStyle(FluencyTheme.success)
+                                .font(.title3)
+                            Text(feature)
+                                .font(FluencyTheme.bodyFont)
+                        }
+                    }
+                }
+                .padding(FluencyTheme.cardPadding)
+                .background(FluencyTheme.cardBg)
+                .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
+                .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
+                .padding(.horizontal)
+
+                Spacer().frame(height: 28)
+
+                // Price toggle
+                HStack(spacing: 2) {
+                    PriceToggleButton(label: "Monthly\n$9.99", isSelected: !isAnnual) { isAnnual = false }
+                    PriceToggleButton(label: "Annual\n$49.99", badge: "Most Popular", isSelected: isAnnual) { isAnnual = true }
+                }
+                .padding(.horizontal)
+
+                Spacer().frame(height: 24)
+
+                VStack(spacing: 10) {
+                    FluencyPrimaryButton("Try Free for 7 Days", action: onTrial)
+                        .padding(.horizontal)
+
+                    Button("Continue with free version", action: onFree)
+                        .font(FluencyTheme.captionFont)
+                        .foregroundStyle(FluencyTheme.textSecondary)
+                }
+                .padding(.bottom, 40)
+            }
+        }
+    }
+}
+
+private struct PriceToggleButton: View {
+    let label: String
+    var badge: String? = nil
+    let isSelected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            ZStack(alignment: .topTrailing) {
+                VStack(spacing: 4) {
+                    Text(label)
+                        .font(.system(.subheadline, design: .default, weight: .semibold))
+                        .foregroundStyle(isSelected ? .white : FluencyTheme.textPrimary)
+                        .multilineTextAlignment(.center)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 14)
+                .background(isSelected ? FluencyTheme.primary : Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(isSelected ? FluencyTheme.primary : FluencyTheme.border, lineWidth: 1))
+
+                if let badge {
+                    Text(badge)
+                        .font(.system(size: 10, weight: .bold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 3)
+                        .background(FluencyTheme.gold)
+                        .clipShape(Capsule())
+                        .offset(x: -4, y: -6)
+                }
+            }
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+// MARK: - Screen 1.6 — Account Creation
+
+private struct AccountCreationScreen: View {
+    let onCreate: () -> Void
+    @State private var email = ""
+    @State private var password = ""
+
+    var body: some View {
+        OnboardingShell(title: "Create your account", step: 4, total: 4) {
+            VStack(spacing: 16) {
+                // Sign in with Apple (prominent)
+                Button {
+                    onCreate() // stub — real auth in future
+                } label: {
+                    HStack(spacing: 10) {
+                        Image(systemName: "applelogo")
+                            .font(.body)
+                        Text("Sign up with Apple")
+                            .font(.system(.body, design: .default, weight: .semibold))
+                    }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: FluencyTheme.buttonHeight)
+                    .background(Color.black)
+                    .clipShape(Capsule())
+                }
+
+                Button {
+                    onCreate() // stub
+                } label: {
+                    HStack(spacing: 10) {
+                        Image(systemName: "globe")
+                            .font(.body)
+                        Text("Sign up with Google")
+                            .font(.system(.body, design: .default, weight: .semibold))
+                    }
+                    .foregroundStyle(FluencyTheme.textPrimary)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: FluencyTheme.buttonHeight)
+                    .background(Color.white)
+                    .clipShape(Capsule())
+                    .overlay(Capsule().stroke(FluencyTheme.border, lineWidth: 1))
+                }
+
+                HStack {
+                    VStack { Divider() }
+                    Text("or")
+                        .font(FluencyTheme.captionFont)
+                        .foregroundStyle(FluencyTheme.textSecondary)
+                        .padding(.horizontal, 8)
+                    VStack { Divider() }
+                }
+
+                VStack(spacing: 12) {
+                    TextField("Email", text: $email)
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.emailAddress)
+                        .padding(FluencyTheme.cardPadding)
+                        .background(FluencyTheme.cardBg)
+                        .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
+                        .overlay(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius).stroke(FluencyTheme.border))
+
+                    SecureField("Password", text: $password)
+                        .padding(FluencyTheme.cardPadding)
+                        .background(FluencyTheme.cardBg)
+                        .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
+                        .overlay(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius).stroke(FluencyTheme.border))
+                }
+            }
+        } footer: {
+            FluencyPrimaryButton("Create Account",
+                                 isDisabled: email.isEmpty || password.count < 6,
+                                 action: onCreate)
+                .padding(.horizontal)
+        }
+    }
+}
+
+// MARK: - Shared Shell
+
+private struct OnboardingShell<Content: View, Footer: View>: View {
+    let title: String
+    let step: Int
+    let total: Int
+    @ViewBuilder let content: Content
+    @ViewBuilder let footer: Footer
+
+    var body: some View {
+        ZStack {
+            FluencyTheme.surface.ignoresSafeArea()
+            VStack(spacing: 0) {
+                // Step indicator dots
+                HStack(spacing: 6) {
+                    ForEach(1...total, id: \.self) { i in
+                        Capsule()
+                            .fill(i <= step ? FluencyTheme.primary : FluencyTheme.border)
+                            .frame(width: i == step ? 20 : 8, height: 8)
+                            .animation(FluencyTheme.springSnappy, value: step)
+                    }
+                }
+                .padding(.top, 16)
+
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 24) {
+                        Text(title)
+                            .font(.system(size: 28, weight: .bold))
+                            .padding(.top, 24)
+                        content
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
+                }
+
+                footer
+                    .padding(.bottom, 32)
+            }
+        }
     }
 }
