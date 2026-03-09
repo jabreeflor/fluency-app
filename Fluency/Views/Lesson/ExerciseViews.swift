@@ -280,6 +280,9 @@ struct ListeningView: View {
 struct SpeakingView: View {
     let exercise: ExerciseContent
     @ObservedObject var session: LessonSession
+    @ObservedObject private var speechService = SpeechService.shared
+    @State private var showTypeInstead = false
+    @State private var typedAnswer = ""
 
     var body: some View {
         VStack(spacing: 24) {
@@ -290,41 +293,87 @@ struct SpeakingView: View {
                 .font(.title.italic())
                 .foregroundStyle(FluencyTheme.primary)
                 .multilineTextAlignment(.center)
+                .padding(.horizontal)
 
-            // Mic button
-            Button {
-                session.isListening ? session.isListening = false : (session.isListening = true)
-            } label: {
-                ZStack {
-                    Circle()
-                        .fill(session.isListening ? FluencyTheme.accent : FluencyTheme.primary)
-                        .frame(width: 80, height: 80)
-                        .scaleEffect(session.isListening ? 1.15 : 1.0)
-                        .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true), value: session.isListening)
-                    Image(systemName: session.isListening ? "mic.fill" : "mic")
-                        .font(.title)
-                        .foregroundStyle(.white)
+            if showTypeInstead {
+                // Fallback: type the answer
+                VStack(spacing: 12) {
+                    TextField("Type the Spanish phrase...", text: $typedAnswer)
+                        .font(.title3)
+                        .padding(FluencyTheme.cardPadding)
+                        .background(FluencyTheme.cardBg)
+                        .clipShape(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius))
+                        .overlay(RoundedRectangle(cornerRadius: FluencyTheme.cornerRadius).stroke(FluencyTheme.border, lineWidth: 2))
+                        .autocorrectionDisabled()
+
+                    Button("Check Answer") {
+                        session.submitAnswer(typedAnswer)
+                    }
+                    .buttonStyle(FluencyButtonStyle(isDisabled: typedAnswer.isEmpty))
+                    .disabled(typedAnswer.isEmpty)
                 }
-            }
+            } else {
+                // Mic button
+                Button {
+                    if speechService.isListening {
+                        let result = session.stopSpeaking()
+                        if !result.isEmpty {
+                            session.submitAnswer(result)
+                        }
+                    } else {
+                        session.startSpeaking()
+                    }
+                } label: {
+                    ZStack {
+                        Circle()
+                            .fill(speechService.isListening ? FluencyTheme.accent : FluencyTheme.primary)
+                            .frame(width: 88, height: 88)
+                            .shadow(color: (speechService.isListening ? FluencyTheme.accent : FluencyTheme.primary).opacity(0.4),
+                                    radius: speechService.isListening ? 20 : 8)
+                            .scaleEffect(speechService.isListening ? 1.12 : 1.0)
+                            .animation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true)
+                                .delay(speechService.isListening ? 0 : .infinity), value: speechService.isListening)
 
-            if !session.recognizedSpeech.isEmpty {
-                Text("Heard: \"\(session.recognizedSpeech)\"")
-                    .font(FluencyTheme.bodyFont)
+                        Image(systemName: speechService.isListening ? "mic.fill" : "mic")
+                            .font(.system(size: 32))
+                            .foregroundStyle(.white)
+                    }
+                }
+
+                Text(speechService.isListening ? "Listening... tap to stop" : "Tap the mic to speak")
+                    .font(FluencyTheme.captionFont)
                     .foregroundStyle(FluencyTheme.textSecondary)
 
-                Button("Submit") {
-                    session.submitAnswer(session.recognizedSpeech)
-                }
-                .buttonStyle(FluencyButtonStyle())
-            }
+                if !speechService.transcription.isEmpty {
+                    VStack(spacing: 8) {
+                        Text("Heard: \"\(speechService.transcription)\"")
+                            .font(FluencyTheme.bodyFont)
+                            .foregroundStyle(FluencyTheme.textSecondary)
+                            .multilineTextAlignment(.center)
 
-            // Skip option
-            Button("Skip (type instead)") {
-                session.submitAnswer("__skip__")
+                        Button("Submit Answer") {
+                            session.submitAnswer(speechService.transcription)
+                        }
+                        .buttonStyle(FluencyButtonStyle())
+                    }
+                }
+
+                if let error = speechService.errorMessage {
+                    Text(error)
+                        .font(FluencyTheme.captionFont)
+                        .foregroundStyle(FluencyTheme.accent)
+                }
+
+                // Type instead option
+                Button("Type instead") {
+                    speechService.stopListening()
+                    showTypeInstead = true
+                }
+                .font(FluencyTheme.captionFont)
+                .foregroundStyle(FluencyTheme.textSecondary)
             }
-            .font(FluencyTheme.captionFont)
-            .foregroundStyle(FluencyTheme.textSecondary)
         }
+        .onDisappear { speechService.stopListening() }
     }
 }
 

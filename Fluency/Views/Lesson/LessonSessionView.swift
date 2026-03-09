@@ -30,10 +30,15 @@ struct LessonSessionView: View {
             case .active, .showingFeedback:
                 activeSessionView
 
-            case .complete(let score, let xp):
-                LessonResultView(score: score, xpEarned: xp, lesson: lesson) {
-                    dismiss()
-                }
+            case .complete(let score, let xp, let correct, let total):
+                LessonResultsView(
+                    score: score,
+                    xpEarned: xp,
+                    correctAnswers: correct,
+                    totalQuestions: total,
+                    streak: user.currentStreak,
+                    onContinue: { dismiss() }
+                )
 
             case .failed:
                 LessonFailedView(lesson: lesson) {
@@ -274,7 +279,7 @@ extension SessionState: Equatable {
         switch (lhs, rhs) {
         case (.idle, .idle), (.active, .active), (.failed, .failed): return true
         case (.showingFeedback(let a), .showingFeedback(let b)): return a == b
-        case (.complete(let s1, let x1), .complete(let s2, let x2)): return s1 == s2 && x1 == x2
+        case (.complete(let s1, let x1, _, _), .complete(let s2, let x2, _, _)): return s1 == s2 && x1 == x2
         default: return false
         }
     }

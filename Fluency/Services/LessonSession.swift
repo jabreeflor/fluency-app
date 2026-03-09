@@ -7,7 +7,7 @@ enum SessionState {
     case idle
     case active
     case showingFeedback(correct: Bool)
-    case complete(score: Double, xpEarned: Int)
+    case complete(score: Double, xpEarned: Int, correct: Int, total: Int)
     case failed // 0 hearts
 }
 
@@ -177,15 +177,15 @@ final class LessonSession: ObservableObject {
             _ = srService.upsertCard(for: word, lessonId: lesson.id, user: user, context: modelContext)
         }
 
-        // Update streak
-        updateStreak()
+        // Update streak via StreakService
+        StreakService.shared.updateStreak(for: user)
 
         try? modelContext.save()
 
         if failed {
             sessionState = .failed
         } else {
-            sessionState = .complete(score: score, xpEarned: xp)
+            sessionState = .complete(score: score, xpEarned: xp, correct: correctCount, total: totalQuestions)
         }
     }
 
@@ -251,26 +251,6 @@ final class LessonSession: ObservableObject {
         }
     }
 
-    // MARK: - Streak
-
-    private func updateStreak() {
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
-        let lastActive = calendar.startOfDay(for: user.lastActiveDate)
-        let daysDiff = calendar.dateComponents([.day], from: lastActive, to: today).day ?? 0
-
-        if daysDiff == 0 {
-            // Already active today — no change
-        } else if daysDiff == 1 {
-            user.currentStreak += 1
-            user.longestStreak = max(user.longestStreak, user.currentStreak)
-        } else {
-            user.currentStreak = 1 // reset
-        }
-
-        user.lastActiveDate = Date()
-    }
-
     // MARK: - XP Calculation
 
     private func calculateXP(score: Double, baseXP: Int) -> Int {
@@ -288,23 +268,31 @@ final class LessonSession: ObservableObject {
 
     func playAudio(file: String) {
         guard let url = Bundle.main.url(forResource: file, withExtension: nil, subdirectory: "Content/Spanish/Audio") else {
-            // TTS fallback
-            speakWord(currentExercise?.question ?? "")
+            // TTS fallback — speak the question text
+            let text = currentExercise?.correctAnswer ?? currentExercise?.question ?? ""
+            SpeechService.shared.speak(text, language: "es-ES")
             return
         }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.play()
         } catch {
-            speakWord(currentExercise?.question ?? "")
+            let text = currentExercise?.correctAnswer ?? ""
+            SpeechService.shared.speak(text, language: "es-ES")
         }
     }
 
-    private func speakWord(_ text: String) {
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "es-ES")
-        utterance.rate = 0.4
-        AVSpeechSynthesizer().speak(utterance)
+    // MARK: - Speech (Speaking exercises)
+
+    func startSpeaking() {
+        SpeechService.shared.startListening(languageCode: "es-ES")
+        isListening = true
+    }
+
+    func stopSpeaking() -> String {
+        SpeechService.shared.stopListening()
+        isListening = false
+        return SpeechService.shared.transcription
     }
 
     // MARK: - Levenshtein Distance
