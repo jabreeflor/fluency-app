@@ -128,6 +128,8 @@ enum SubscriptionType: String, Codable {
     var userId: UUID = UUID()
     var word: String = ""
     var translation: String = ""
+    var phonetic: String = ""
+    var exampleSentence: String = ""
     var languageCode: String = ""
     var lessonId: String = ""
 
@@ -144,11 +146,13 @@ enum SubscriptionType: String, Codable {
 
     @Relationship(inverse: \User.srCards) var user: User?
 
-    init(userId: UUID, word: String, translation: String, languageCode: String, lessonId: String) {
+    init(userId: UUID, word: String, translation: String, phonetic: String = "", exampleSentence: String = "", languageCode: String, lessonId: String) {
         self.id = UUID()
         self.userId = userId
         self.word = word
         self.translation = translation
+        self.phonetic = phonetic
+        self.exampleSentence = exampleSentence
         self.languageCode = languageCode
         self.lessonId = lessonId
         self.nextReviewDate = Date()

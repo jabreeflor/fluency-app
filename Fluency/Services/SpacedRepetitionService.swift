@@ -16,6 +16,9 @@ final class SpacedRepetitionService {
     ///   2 = incorrect but correct answer felt easy to recall
     ///   1 = incorrect, correct answer was hard
     ///   0 = complete blackout
+    /// Alias for ReviewView compatibility
+    func updateCard(_ card: SRCard, quality: Int) { update(card: card, quality: quality) }
+
     func update(card: SRCard, quality: Int) {
         card.totalReviews += 1
         card.lastReviewDate = Date()
@@ -76,6 +79,8 @@ final class SpacedRepetitionService {
             userId: user.id,
             word: word.word,
             translation: word.translation,
+            phonetic: word.phonetic ?? "",
+            exampleSentence: "",
             languageCode: user.selectedLanguageCode,
             lessonId: lessonId
         )

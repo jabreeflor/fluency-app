@@ -5,6 +5,7 @@ struct HomeView: View {
     var user: User
     @Query private var lessonResults: [LessonResult]
     @State private var selectedLesson: String?
+    @State private var showStreakView = false
     @Environment(\.modelContext) private var modelContext
 
     private var greeting: String {
@@ -45,8 +46,11 @@ struct HomeView: View {
                             .padding(.horizontal, 20)
 
                         // MARK: - Streak Section
-                        StreakSection(user: user)
-                            .padding(.horizontal, 20)
+                        Button { showStreakView = true } label: {
+                            StreakSection(user: user)
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.horizontal, 20)
 
                         // MARK: - Quick Practice
                         VStack(alignment: .leading, spacing: 12) {
@@ -74,6 +78,7 @@ struct HomeView: View {
                 }
             }
             .navigationBarHidden(true)
+            .sheet(isPresented: $showStreakView) { StreakView(user: user) }
         }
     }
 }
