@@ -46,6 +46,9 @@ struct LessonContent: Codable, Identifiable {
     let xpReward: Int
     let newWords: [WordEntry]
     let exercises: [ExerciseContent]
+
+    /// Estimated minutes based on word count (≈1 min per 2 words, min 4)
+    var estimatedMinutes: Int { max(4, newWords.count / 2 + exercises.count / 4) }
 }
 
 struct WordEntry: Codable, Identifiable {

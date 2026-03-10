@@ -21,6 +21,7 @@
 		7B2D33CD1D930B1358B0CEC4 /* SpacedRepetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FBC5125C1305873033EC5D /* SpacedRepetitionService.swift */; };
 		870255E0D27F1F2270D3A68A /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63568F5B909203FA30033541 /* PaywallView.swift */; };
 		95F400FDDCA62E9BA2B00D62 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232C6D9D1D0011081A0182D /* SpeechService.swift */; };
+		A4433CEFC5B978F7708B90D5 /* LessonIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F163964A6FD2DC69CDF6C /* LessonIntroView.swift */; };
 		A4858F47DCC48244147DBDA7 /* HeartRefillService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274513890C40262E4D68CF9 /* HeartRefillService.swift */; };
 		AC27A1D745407DC3A551177A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375F2185A563B49BD831F14E /* MainTabView.swift */; };
 		AC4EADDA59AE19D14B0E539B /* LessonResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66280E3D2B05258D429F063 /* LessonResultsView.swift */; };
@@ -56,6 +57,7 @@
 		B75BE855194CBFD72F7124B8 /* LessonSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSessionView.swift; sourceTree = "<group>"; };
 		C58043E6F04D8F15F59F4360 /* LessonSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSession.swift; sourceTree = "<group>"; };
 		C682BCAF0CC13A0931A5A955 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CE0F163964A6FD2DC69CDF6C /* LessonIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonIntroView.swift; sourceTree = "<group>"; };
 		D66280E3D2B05258D429F063 /* LessonResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonResultsView.swift; sourceTree = "<group>"; };
 		E1A97695ACC19A27CE9D888D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		F274513890C40262E4D68CF9 /* HeartRefillService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRefillService.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				854FB8AC53EB7DB9C8E55A73 /* ExerciseViews.swift */,
+				CE0F163964A6FD2DC69CDF6C /* LessonIntroView.swift */,
 				D66280E3D2B05258D429F063 /* LessonResultsView.swift */,
 				B75BE855194CBFD72F7124B8 /* LessonSessionView.swift */,
 			);
@@ -276,6 +279,7 @@
 				A4858F47DCC48244147DBDA7 /* HeartRefillService.swift in Sources */,
 				64B6F5C1DFE8841204A21F13 /* HomeView.swift in Sources */,
 				CCAF503EED8ED027959F67AD /* LearnView.swift in Sources */,
+				A4433CEFC5B978F7708B90D5 /* LessonIntroView.swift in Sources */,
 				AC4EADDA59AE19D14B0E539B /* LessonResultsView.swift in Sources */,
 				2D3C70B66D4F1F03FA2E217D /* LessonSession.swift in Sources */,
 				556B4288725EA8DF3A327E2C /* LessonSessionView.swift in Sources */,

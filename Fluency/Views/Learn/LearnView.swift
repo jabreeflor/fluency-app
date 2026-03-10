@@ -176,7 +176,7 @@ struct LessonRow: View {
             .padding(.vertical, 12)
         }
         .fullScreenCover(item: $lessonContent) { lesson in
-            LessonSessionView(lesson: lesson, user: user)
+            LessonIntroView(lesson: lesson, user: user)
         }
     }
 }

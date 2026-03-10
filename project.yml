@@ -28,6 +28,7 @@ targets:
       - path: Fluency/Resources/Assets.xcassets
       - path: Fluency/Resources/Content
         buildPhase: resources
+
     info:
       path: Fluency/Info.plist
       properties:
@@ -39,7 +40,8 @@ targets:
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
         UILaunchScreen:
-          UIColorName: ""
+          UIColorName: LaunchBG
+          UIImageName: ""
         NSMicrophoneUsageDescription: "Fluency uses your microphone for speaking exercises."
         NSSpeechRecognitionUsageDescription: "Fluency uses speech recognition to check your pronunciation."
     entitlements:
