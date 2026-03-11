@@ -238,7 +238,7 @@ struct SRSessionView: View {
                 .foregroundStyle(FluencyTheme.textSecondary)
 
             HStack(spacing: 10) {
-                RatingButton(label: "Again", sublabel: "Forgot", color: FluencyTheme.error) { session.rate(1) }
+                RatingButton(label: "Again", sublabel: "Tricky", color: FluencyTheme.error) { session.rate(1) }
                 RatingButton(label: "Hard", sublabel: "Struggled", color: .orange) { session.rate(2) }
                 RatingButton(label: "Good", sublabel: "Got it", color: FluencyTheme.primary) { session.rate(4) }
                 RatingButton(label: "Easy", sublabel: "Obvious", color: FluencyTheme.success) { session.rate(5) }
