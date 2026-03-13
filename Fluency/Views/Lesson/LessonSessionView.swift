@@ -36,6 +36,7 @@ struct LessonSessionView: View {
                     correctAnswers: correct,
                     totalQuestions: total,
                     streak: user.currentStreak,
+                    totalLessonsCompleted: user.lessonResults.filter { $0.completedAt != nil }.count,
                     onContinue: { dismiss() }
                 )
 

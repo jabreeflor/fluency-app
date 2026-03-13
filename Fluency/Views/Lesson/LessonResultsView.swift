@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// Full-screen results screen with XP animation shown after completing a lesson
 struct LessonResultsView: View {
@@ -7,7 +8,11 @@ struct LessonResultsView: View {
     let correctAnswers: Int
     let totalQuestions: Int
     let streak: Int
+    /// Total number of lessons the user has completed across all sessions
+    var totalLessonsCompleted: Int = 0
     let onContinue: () -> Void
+
+    @Environment(\.openURL) private var openURL
 
     @State private var showXP = false
     @State private var showStats = false
@@ -99,7 +104,20 @@ struct LessonResultsView: View {
                     .animation(.spring(response: 0.4).delay(0.1), value: showStats)
             }
         }
-        .onAppear { animate() }
+        .onAppear {
+            animate()
+            // Fire review prompt after animation settles (≥1s delay keeps it off mid-lesson)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                let scene = UIApplication.shared.connectedScenes
+                    .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+                ReviewPromptManager.shared.evaluate(
+                    totalLessonsCompleted: totalLessonsCompleted,
+                    currentStreak: streak,
+                    accuracy: score,
+                    scene: scene
+                )
+            }
+        }
     }
 
     private func animate() {
